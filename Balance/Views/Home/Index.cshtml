@@ -1,0 +1,511 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Style/gridgallery.css" rel="stylesheet">
+    <link href="~/Content/Style/modal.css" rel="stylesheet">
+    <!-- hover black-white-->
+    <link href="~/Content/Style/global.css" rel="stylesheet">
+}
+<!-- Our Work Section -->
+<div id="work" class="page" name="work">
+    <div class="container">
+        <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h2 class="title">Project</h2>
+                    <!-- <h3 class="title-description">Check Out Our Projects on <a href="#">Balance</a>.</h3> -->
+                   
+                </div>
+            </div>
+        </div>
+        <!-- End Title Page -->
+        <!-- Portfolio Projects -->
+
+        <div class="row">
+            <div class="span12">
+                <div class="row">
+                    <div class="col-lg-2" style="float:left;">
+                        <!-- Filter -->
+                        <nav id="options" class="work-nav">
+                            <ul id="filters" class="option-set" data-option-key="filter">
+                                <li class="type-work">Type of Work</li>
+                                <li><a href="#filter" data-option-value="*" class="selected">All Projects</a></li>
+                                @*<li><a href="#filter" data-option-value="*">Design</a></li>
+                                <li><a href="#filter" data-option-value="*">Home</a></li>*@
+                                @Html.Raw(ViewBag.MenuLeft)
+                            </ul>
+                        </nav>
+                        <!-- End Filter -->
+                    </div>
+                    <div class="col-lg-8" style="float:right;width:1000px">
+                        <div class="row1">
+                            <div class="column">
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
+                                </div>
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
+                                </div>
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/falls2.jpg' alt='image-02-full.jpg'>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
+                                </div>
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
+                                </div>
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/falls2.jpg' alt='image-02-full.jpg'>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
+                                </div>
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
+                                </div>
+                                <div class="item-thumbs mb-0 blackandwhite">
+                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
+                                        <span class='overlay-img-thumb'></span>
+                                    </a>
+                                    <img src='~/Images/photos/falls2.jpg' alt='image-02-full.jpg'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Portfolio Projects -->
+    </div>
+</div>
+<!-- End Our Work Section -->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-auto-resize">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body modal-custom clearfix">
+                <div class="parentSlides">
+                    <div class="col-sm-12 col-md-10 col-lg-10 ">
+                        <div class="row">
+                            <div class="mySlides">
+                                <div class="numbertext">1 / 6</div>
+                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+                            </div>
+
+                            <div class="mySlides">
+                                <div class="numbertext">2 / 6</div>
+                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+                            </div>
+
+                            <div class="mySlides">
+                                <div class="numbertext">3 / 6</div>
+                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+                            </div>
+
+                            <div class="mySlides">
+                                <div class="numbertext">4 / 6</div>
+                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+                            </div>
+
+                            <div class="mySlides">
+                                <div class="numbertext">5 / 6</div>
+                                <img class="img-large" src="~/Images/photos/image-02-full.jpg">
+                            </div>
+
+                            <div class="mySlides">
+                                <div class="numbertext">6 / 6</div>
+                                <img class="img-large" src="~/Images/photos/image-02-full.jpg">
+                            </div>
+
+                            <a class="prev" onclick="plusSlides(-1)">❮</a>
+                            <a class="next" onclick="plusSlides(1)">❯</a>
+
+                            <div class="caption-container">
+                                <p id="caption"></p>
+                            </div>
+                        </div>
+                     </div>
+                    <div class="col-sm-12 col-md-2 col-lg-2 pl-2">
+                        <div class="row">
+                            <div class="columnB">
+                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(1)" alt="Balance 1">
+                            </div>
+                            <div class="columnB">
+                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(2)" alt="Balance 2">
+                            </div>
+                            <div class="columnB">
+                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(3)" alt="Balance 3">
+                            </div>
+                            <div class="columnB">
+                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(4)" alt="Balance 4">
+                            </div>
+                            <div class="columnB">
+                                <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(5)" alt="Balance 5">
+                            </div>
+                            <div class="columnB">
+                                <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(6)" alt="Balance 6">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- About Section -->
+<div id="about" class="page-alternate">
+    <div class="container">
+        <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h2 class="title">Balance Life</h2>
+                    <h3 class="title-description">We are not a Company, We are Family</h3>
+                </div>
+            </div>
+        </div>
+        <!-- End Title Page -->
+        <!-- Photo Grid -->
+        <div class="row1">
+            <div class="column">
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                    <img src="~/Images/photos/paris.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/falls2.jpg'></a>
+                    <img src="~/Images/photos/falls2.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                    <img src="~/Images/photos/nature.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                    <img src="~/Images/photos/mist.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                    <img src="~/Images/photos/paris.jpg" style="width:100%">
+                </div>
+            </div>
+            <div class="column">
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                    <img src="~/Images/photos/paris.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
+                    <img src="~/Images/photos/ocean.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                    <img src="~/Images/photos/nature.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
+                    <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
+                </div>
+            </div>
+            <div class="column">
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                    <img src="~/Images/photos/paris.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                    <img src="~/Images/photos/nature.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                    <img src="~/Images/photos/mist.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
+                </div>
+            </div>
+            <div class="column">
+                 <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                    <img src="~/Images/photos/mist.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
+                    <img src="~/Images/photos/ocean.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                    <img src="~/Images/photos/nature.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                    <img src="~/Images/photos/mist.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
+                </div>
+            </div>
+            <div class="column">
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
+                    <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
+                    <img src="~/Images/photos/ocean.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                    <img src="~/Images/photos/nature.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
+                    <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
+                </div>
+            </div>
+            <div class="column">
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                    <img src="~/Images/photos/paris.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                    <img src="~/Images/photos/nature.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                    <img src="~/Images/photos/mist.jpg" style="width:100%">
+                </div>
+                <div class="item-thumbs mb-0">
+                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End About Section -->
+<!-- Contact Section -->
+<div id="contact" class="page">
+    <div class="container">
+        <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h2 class="title">Contact Us</h2>
+                    <h3 class="title-description">ONLINE CUSTOMER SERVICE.</h3>
+                </div>
+            </div>
+        </div>
+        <!-- End Title Page -->
+        <!-- Contact Form -->
+        <div class="row">
+            <div class="col-lg-9" style="float:right;">
+
+                <!-- <form method="post" action="_include/php/email.php">
+                    Email: <input name="email" id="email" type="text" />
+
+                    Message:
+                    <textarea name="message" id="message" rows="15" cols="40"></textarea>
+
+                    <input type="submit" value="Submit" />
+                </form> -->
+                <form id="contact-form" class="contact-form" action="#">
+                    <p class="contact-name">
+                        <input id="contact_name" type="text" placeholder="Full Name" value="" name="name" />
+                    </p>
+                    <p class="contact-email">
+                        <input id="contact_email" type="text" placeholder="Email Address" value="" name="email" />
+                    </p>
+                    <p class="contact-message">
+                        <textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40"></textarea>
+                    </p>
+                    <p class="contact-submit">
+                        <a id="contact-submit" class="submit" href="">Send Your Email</a>
+                    </p>
+
+                    <div id="response">
+
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="col-lg-3" style="float:left;">
+                <div class="contact-details">
+                    <h3>Contact Details</h3>
+                    <ul>
+                        <li><a href="#">bal@bal.vn</a></li>
+                        <li>((84) 123-1234-1234)</li>
+                        <li>
+                            Balance Design Office
+                            <br>
+                            <!-- 5240 Vanish Island. 105 -->
+                            <br>
+                            <!-- Unknow -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact Form -->
+    </div>
+</div>
+<!-- End Contact Section -->
+<!-- Twitter Feed -->
+<div id="twitter-feed" class="page-alternate">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-6 col-xs-6">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBalancedesignoffice%2F&tabs=timeline&width=500px&height=400px&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=215613875734395" width="500px" height="400px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBalancedesignoffice%2F&tabs=messages&width=500px&height=400px&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=215613875734395" width="500px" height="400px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+            </div>
+            <!-- <div class="span12">
+                <div class="follow">
+                </div>
+
+                <div id="ticker" class="query">
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- End Twitter Feed -->
+<!-- Socialize -->
+<div id="social-area" class="page">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <nav id="social">
+                    <ul>
+                        <li><a href="https://twitter.com/" title="Follow Me on Twitter" target="_blank"><span class="font-icon-social-twitter"></span></a></li>
+                        <li><a href="http://dribbble.com/" title="Follow Me on Dribbble" target="_blank"><span class="font-icon-social-dribbble"></span></a></li>
+                        <li><a href="http://forrst.com/people/" title="Follow Me on Forrst" target="_blank"><span class="font-icon-social-forrst"></span></a></li>
+                        <li><a href="http://www.behance.net/" title="Follow Me on Behance" target="_blank"><span class="font-icon-social-behance"></span></a></li>
+                        <li><a href="https://www.facebook.com/Balancedesignoffice/" title="Follow Me on Facebook" target="_blank"><span class="font-icon-social-facebook"></span></a></li>
+                        <li><a href="https://plus.google.com/" title="Follow Me on Google Plus" target="_blank"><span class="font-icon-social-google-plus"></span></a></li>
+                        <li><a href="http://www.linkedin.com/" title="Follow Me on LinkedIn" target="_blank"><span class="font-icon-social-linkedin"></span></a></li>
+                        <li><a href="http://themeforest.net/" title="Follow Me on ThemeForest" target="_blank"><span class="font-icon-social-envato"></span></a></li>
+                        <li><a href="http://zerply.com/" title="Follow Me on Zerply" target="_blank"><span class="font-icon-social-zerply"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Socialize -->
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+      var captionText = document.getElementById("caption");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+</script>

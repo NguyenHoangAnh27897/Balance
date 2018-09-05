@@ -1,0 +1,97 @@
+﻿@model System.Data.DataTable
+@using System.Data
+@{
+    ViewBag.Title = "ECSQLP";
+    Layout = "~/Views/Shared/_LayoutBackend.cshtml";
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin/index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Quản lý Dự án</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Start form -->
+        <div class="form-area">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Thêm Dự án</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/admin/EditQLP" method="post" enctype="multipart/form-data">
+                                @foreach (System.Data.DataRow row in Model.Rows)
+                                {
+                                    <div class="form-group" style="display:none"><input type="text" name="ID" value="@row.ItemArray[0].ToString()" /></div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput4">Tittle Project</label>
+                                        @*<asp:TextBox ID="TextBox1" class="form-control" placeholder="ex: Project" runat="server"></asp:TextBox>*@
+                                        <input type="text" class="form-control" placeholder="@row.ItemArray[1].ToString()" name="title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Type</label>
+                                        @Html.Raw(ViewBag.Type)
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Example file input</label>
+                                        <br />
+                                        <input type="file" name="images" accept="image/*" />
+                                        <img src="~/Images/photos/@row.ItemArray[4].ToString()" style="width:100%" />
+                                        @*<asp:Image ID="Image1" runat="server" class="form-control-file" Height="250px" Width="200px" />
+                <asp:FileUpload ID="FileUpload1" class="form-control-file" runat="server" />*@
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Nội dung</label>
+                                        @*<FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" BasePath="~/fckeditor/" Height="400px" ToolbarSet="Buukute" Width="100%">
+                </FCKeditorV2:FCKeditor>*@
+                                        <br />
+                                        <textarea name="editor" id="editor" rows="50" cols="80">@Html.Raw(row.ItemArray[3].ToString())</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-check-label"><input type="checkbox" name="hide" />Hide</label>
+
+
+                                    </div>
+
+                                    @*<asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" runat="server" Text="Cancel" class="btn btn-primary" OnClick="Button2_Click" />*@
+                                    <button class="btn btn-primaryt">Submit</button>
+                                }
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<script src="~/Content/Style/Webmaster/js/ckeditor/ckeditor.js"></script>
+<script src="~/Content/Style/Webmaster/js/ckeditor/samples/js/sample.js"></script>
+<script>
+    CKEDITOR.replace('editor');
+</script>
+

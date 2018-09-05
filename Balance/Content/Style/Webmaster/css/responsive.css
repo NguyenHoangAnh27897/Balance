@@ -1,0 +1,225 @@
+@media screen and (min-width: 1920px) {
+    .container {
+        max-width: 1620px;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    body {
+        padding-left: 0;
+    }
+
+    .left-sidebar {
+        z-index: 9;
+        left: -300px;
+    }
+    .left-sidebar.hide {
+        left: 0;
+    }
+    body.hide .top-header-left {
+        margin-left: 300px;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+    .single-report,
+    .daily-sale,
+    .daily-task {
+        margin-bottom: 30px;
+    }
+    .visitors-map {
+        margin-top: 0;
+    }
+
+    /*----------------------------*/
+    .exchange-icon {
+        margin: 0;
+    }
+    /*----------------------------*/
+    #chartdiv-1,
+    #chartdiv-2,
+    #chartdiv-3,
+    #chartdiv-4,
+    #chartdiv-5,
+    #chartdiv-6,
+    #chartdiv-7,
+    #chartdiv-8,
+    #chartdiv-9,
+    #chartdiv-10,
+    #curve_chart {
+        width: 100%;
+        height: 350px;
+    }
+    /*----------------------------*/
+    .btn-single-grp .btn,
+    .single-object .media,
+    .single-popover .btn,
+    .single-modal .btn {
+        margin-bottom: 15px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .visitors {
+        margin-bottom: 30px;
+    }
+    .status {
+        width: 47.8%;
+        float: left;
+        margin-right: 30px;
+    }
+    .status:last-child {
+        margin-right: 0;
+    }
+    .blog-area {
+        margin-bottom: 30px;
+    }
+    body.hide .top-header-left {
+        margin-left: 270px;
+        position: absolute;
+    }
+
+    /*-----------------------*/
+    .login-page3,
+    .login-page4 {
+        height: 100%;
+    }
+    .login-page4 .login-area.reg4,
+    .login-page3 .login-area.reg3 {
+        margin: auto;
+        height: auto;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+
+    .top-header-left,
+    .top-user {
+        text-align: center;
+    }
+    .top-header-left,
+    .visitors-left {
+        margin-bottom: 15px;
+    }
+
+    .status {
+        width: 100%;
+        float: none;
+        margin-right: 30px;
+    }
+    body.hide .top-header-left {
+        position: static;
+    }
+    .top-user .icons .drop-down {
+        -webkit-transform: scaleY(0) translateX(-50%);
+        transform: scaleY(0) translateX(-50%);
+    }
+    .top-user .icons .drop-down.drop-down-show {
+        -webkit-transform: scaleY(1) translateX(-50%);
+        transform: scaleY(1) translateX(-50%);
+        left: 50%;
+        width: 100%;
+    }
+    .drop-down.user-dropdown.drop-down-show {
+        width: initial !important;
+    }
+
+    /*----------------------------------*/
+    .exchange-icon {
+        margin: 20px 0 30px;
+    }
+
+    /*----------------------------------*/
+    #chartdiv-1,
+    #chartdiv-2,
+    #chartdiv-3,
+    #chartdiv-4,
+    #chartdiv-5,
+    #chartdiv-6,
+    #chartdiv-7,
+    #chartdiv-8,
+    #chartdiv-9,
+    #chartdiv-10,
+    #curve_chart {
+
+        width: 100%;
+        height: 280px;
+    }
+    /*----------------------------------*/
+    .coming-soon h1 {
+        font-size: 40px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #e2e6ea;
+    }
+    .single-object .media {
+        display: block;
+        margin-bottom: 30px;
+    }
+    .single-object .media .media-body{
+        margin-top: 15px;
+    }
+    .single-object .media img{
+        margin-left: 0 !important;
+        margin-top: 15px;
+    }
+    .login-area {
+        padding: 15px;
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 375px) {
+
+    body.hide .top-header-left .bars {
+        position: absolute;
+        z-index: 9;
+        background: #070713;
+        padding: 10px 12px;
+    }
+
+    /*-------------------------*/
+    .single-btn-area .btn {
+        margin-bottom: 15px;
+    }
+    .error-btn {
+        display: block;
+        margin-bottom: 15px;
+        padding: 5px;
+    }
+    .error-text h2 {
+        font-size: 24px;
+        text-transform: capitalize;
+    }
+    .maintenance-text h1 {
+        font-size: 44px;
+    }
+    .maintenance-text h2{
+        font-size: 26px;
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 320px) {
+
+    body.hide .top-header-left .bars {
+        position: absolute;
+        z-index: 999999999999;
+        background: #070713;
+        padding: 10px 12px;
+        right: -20px;
+        top: -5px;
+    }
+    .blog-top .tag {
+        display: none;
+    }
+}

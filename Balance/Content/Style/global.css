@@ -1,0 +1,12 @@
+﻿.blackandwhite{
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+
+    transition: filter 600ms ease;
+    -webkit-transition: -webkit-filter 600ms ease;
+}
+
+.blackandwhite:hover {
+        filter: grayscale(0);
+        -webkit-filter: grayscale(0);
+}

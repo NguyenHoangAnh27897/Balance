@@ -1,0 +1,318 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Balance Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/css/font-awesome.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/css/owl.theme.default.min.css">
+    <!-- mnap Resources -->
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/js/amcharts/plugins/export/export.css" type="text/css" media="all" />
+
+    <!-- Start datatable css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Style/Webmaster/js/datatables/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Style/Webmaster/js/datatables/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Style/Webmaster/js/datatables/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Style/Webmaster/js/datatables/responsive/2.2.3/css/responsive.jqueryui.min.css">
+
+    <!-- scrollbar -->
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/css/scrollbar.css">
+    <!-- metismenu -->
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/css/metisMenu.css">
+    <!-- Site Style -->
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/style.css">
+    <link rel="stylesheet" href="~/Content/Style/Webmaster/css/responsive.css">
+    <!-- Modernizr Js -->
+    <script src="~/Content/Style/Webmaster/vendors/modernizr-js/modernizr.js"></script>
+</head>
+<body>
+
+
+    <div class="page-wrapper">
+
+
+        <!--================= Start header section =================-->
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6">
+                        <ul class="top-header-left">
+                            <li class="bars"><i class="fa fa-bars"></i></li>
+                            <!-- <li class="search-btn"><i class="fa fa-search"></i></li> -->
+                        </ul>
+                    </div>
+                    <div class="col-xl-8 col-md-6">
+                        <ul class="top-user">
+                            <li class="icons">
+                                <i class="fa fa-envelope"></i>
+                                <ul class="drop-down">
+                                    <li class="title"><h4>new messages</h4></li>
+                                    <li class="single-text">
+                                        <a href="/admin/index" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/01.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="single-text">
+                                        <a href="#" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/02.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="single-text">
+                                        <a href="#" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/03.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="single-text">
+                                        <a href="#" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/04.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="more-btn"><a href="#">show more..</a></li>
+                                </ul>
+                            </li>
+                            <li class="icons">
+                                <i class="fa fa-bell"></i>
+                                <ul class="drop-down">
+                                    <li class="title">
+                                        <h4>Recent Notifications</h4>
+                                    </li>
+                                    <li class="single-text">
+                                        <a href="#" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/01.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="single-text">
+                                        <a href="#" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/02.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="single-text">
+                                        <a href="#" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/03.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="single-text">
+                                        <a href="#" class="row">
+                                            <span class="col-3 thumb">
+                                                <img src="~/Content/Style/Webmaster/images/thumb/04.jpg" alt="" class="img-fluid">
+                                            </span>
+                                            <div class="col-9 info">
+                                                <ul class="clearfix">
+                                                    <li class="pull-left">joneson de</li>
+                                                    <li class="pull-right">20/06/2018</li>
+                                                </ul>
+                                                <p>Lorem ipsum dolor sit amet....</p>
+                                                <span class="time">2.00 pm</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="more-btn"><a href="#">show more..</a></li>
+                                </ul>
+                            </li>
+                            <li class="icons">
+                                <i class="fa fa-user"></i>
+                                <ul class="drop-down user-dropdown">
+                                    <li class="single-text"><a href="#"><i class="fa fa-envelope"></i> message</a></li>
+                                    <li class="single-text"><a href="#"><i class="fa fa-cog"></i> setting</a></li>
+                                    <li class="single-text"><a href="#"><i class="fa fa-power-off "></i> logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================= End header section =================-->
+        <!--================= Start left sidebar section =================-->
+        <div class="left-sidebar">
+            <div class="logo">
+                <a href="#">
+                    <img src="~/Content/Style/Webmaster/images/logo.png" width="180" alt="" class="img-fluid">
+                </a>
+            </div>
+            <div class="profile-user">
+                <img src="~/Content/Style/Webmaster/images/thumb/01.jpg" alt="" class="img-fluid">
+                <h5>Administrator</h5>
+                <p>WEBSITE ADMINISTRATOR</p>
+            </div>
+            <nav class="left-menu">
+                <ul class="metismenu" id="menu">
+                    <li><a href="/admin/index">Dashboard</a></li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true">Type Of Work</a>
+                        <ul>
+                            <li><a href="/admin/QLL">Danh Sách</a></li>
+                            <li><a href="/admin/CSQLL">Thêm</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true">Projects</a>
+                        <ul>
+                            <li><a href="/admin/QLP">Danh Sách</a></li>
+                            <li><a href="/admin/CSQLP">Thêm</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true">Balance Life</a>
+                        <ul>
+                            <li><a href="/admin/QLBL">Danh Sách</a></li>
+                            <li><a href="/admin/CSQLBL">Thêm</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/admin/QLSli">Slider</a></li>
+                    <li><a href="/admin/QLC">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!--================= End left sidebar section =================-->
+        <!--================= End left sidebar section =================-->
+        @RenderBody()
+        <!--================= End left sidebar section =================-->
+
+
+    </div>
+
+
+    <!--================= Start footer section =================-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p> © A3 Solution 2018 . All right reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================= End footer section =================-->
+    <!--================= Start search section =================-->
+    <!-- <div class="search-area search-hide">
+        <div class="close-btn"></div>
+        <form>
+            <input class="form-control" type="search" placeholder="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div> -->
+    <!--================= End search section =================-->
+    <!--================= Jquery plugins =================-->
+    <script src="~/Content/Style/Webmaster/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/Style/Webmaster/js/bootstrap.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="~/Content/Style/Webmaster/js/owl.carousel.min.js"></script>
+    <!-- metisMenu -->
+    <script src="~/Content/Style/Webmaster/js/metisMenu.min.js"></script>
+    <!-- scrollbar -->
+    <script src="~/Content/Style/Webmaster/js/scrollbar.min.js"></script>
+    <!-- Swiper Slider -->
+    <script src="~/Content/Style/Webmaster/vendors/swiper-master/js/swiper.min.js"></script>
+    <!-- maps js -->
+    <!-- Start datatable js -->
+    <script src="~/Content/Style/Webmaster/js/datatable/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="~/Content/Style/Webmaster/js/datatable/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Style/Webmaster/js/datatable/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Style/Webmaster/js/datatable/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/Style/Webmaster/js/datatable/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <!-- maps Resources -->
+    <script src="~/Content/Style/Webmaster/js/amcharts/ammap.js"></script>
+    <script src="~/Content/Style/Webmaster/js/amcharts/maps/js/worldLow.js"></script>
+    <script src="~/Content/Style/Webmaster/js/amcharts/plugins/export/export.min.js"></script>
+    <script src="~/Content/Style/Webmaster/js/amcharts/themes/dark.js"></script>
+
+    <script src="~/Content/Style/Webmaster/js/maps.js"></script>
+    <!-- main js -->
+    <script src="~/Content/Style/Webmaster/js/main.js"></script>
+    @*<script src="~/Content/Style/Webmaster/js/ckeditor/ckeditor.js"></script>*@
+    <!-- income chart js -->
+    <script src="~/Content/Style/Webmaster/js/highcharts.js"></script>
+    <script>
+        Highcharts.chart('income-chart', { chart: { type: 'areaspline' }, title: { text: '' }, legend: { layout: 'vertical', align: 'left', verticalAlign: 'top', x: 150, y: 100, floating: true, borderWidth: 1, backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#000' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], plotBands: [{ from: 4.5, to: 6.5, color: 'rgba(68, 170, 213, .2)' }] }, yAxis: { title: { text: '' } }, tooltip: { shared: true, valueSuffix: ' units' }, credits: { enabled: false }, plotOptions: { areaspline: { fillOpacity: 0.5 } }, series: [{ name: '', data: [3, 4, 3, 5, 4, 10, 12] }] });
+    </script>
+
+
+
+</body>
+</html>
