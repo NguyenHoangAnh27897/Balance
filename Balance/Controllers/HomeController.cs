@@ -20,10 +20,16 @@ namespace Balance.Controllers
         public ActionResult Index()
         {
             _meuLeft = loadCbo();
-            //_cntTOW = loadCnt();
+            _cntTOW = loadCnt();
             //_cntBL = loadBl();
             ViewBag.MenuLeft = _meuLeft;
-            return View();
+            ViewBag.Project = _cntTOW;
+            Connection();
+            string sql = "select * from balancelife";
+            da = new OleDbDataAdapter(sql, cn);
+            dt = new DataTable();
+            da.Fill(dt);
+            return View(dt);
         }
 
         protected void Connection()
@@ -52,5 +58,31 @@ namespace Balance.Controllers
             }
             return data;
         }
+
+        protected string loadCnt()
+        {
+            string data = "";
+            Connection();
+            string sql = "select * from project";
+            da = new OleDbDataAdapter(sql, cn);
+            dt = new DataTable();
+            da.Fill(dt);
+            int i = 3;
+            int j = 0;
+            if (dt.Rows.Count > 0 && dt != null)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    data += "<div class='column' style='flex:30%;'>";   
+                    data += "<div class='item-thumbs mb-0 blackandwhite " + dr["type"].ToString() + "'>";
+                    data += "<a class='hover-wrap' data-toggle='modal' data-target='#myModal'>";
+                    data += "<span class='overlay-img-thumb'></span>";
+                    data += "</a>";
+                    data += "<img src='Images/photos/" + dr["IMG"].ToString() + "' alt=''></div></div>";
+                }
+            }
+            return data;
+        }
+
     }
 }

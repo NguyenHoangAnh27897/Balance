@@ -1,4 +1,5 @@
-﻿
+﻿@model System.Data.DataTable
+@using System.Data
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,6 +7,8 @@
     <link href="~/Content/Style/modal.css" rel="stylesheet">
     <!-- hover black-white-->
     <link href="~/Content/Style/global.css" rel="stylesheet">
+    int i = 6;
+    int j = 0;
 }
 <!-- Our Work Section -->
 <div id="work" class="page" name="work">
@@ -41,20 +44,20 @@
                     </div>
                     <div class="col-lg-8" style="float:right;width:1000px">
                         <div class="row1">
-                            <div class="column">
-                                <div class="item-thumbs mb-0 blackandwhite">
+                            @*<div class="column">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
                                     <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
                                 </div>
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
                                     <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
                                 </div>
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
@@ -62,19 +65,19 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
                                     <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
                                 </div>
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
                                     <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
                                 </div>
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
@@ -82,25 +85,26 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
                                     <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
                                 </div>
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
                                     <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
                                 </div>
-                                <div class="item-thumbs mb-0 blackandwhite">
+                                <div class="item-thumbs mb-0 blackandwhite design">
                                     <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
                                         <span class='overlay-img-thumb'></span>
                                     </a>
                                     <img src='~/Images/photos/falls2.jpg' alt='image-02-full.jpg'>
                                 </div>
-                            </div>
+                            </div>*@
+                            @Html.Raw(ViewBag.Project)
                         </div>
                     </div>
                 </div>
@@ -208,162 +212,171 @@
         <!-- End Title Page -->
         <!-- Photo Grid -->
         <div class="row1">
-            <div class="column">
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
+            @foreach (System.Data.DataRow row in Model.Rows)
+            {
+                <div class="column">
+                    <div class="item-thumbs mb-0">
+                         <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/@row.ItemArray[4].ToString()'></a>
+                            <img src="~/Images/photos/@row.ItemArray[4].ToString()" style="width:100%">
+                     </div>
                 </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                    <img src="~/Images/photos/paris.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/falls2.jpg'></a>
-                    <img src="~/Images/photos/falls2.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                    <img src="~/Images/photos/nature.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                    <img src="~/Images/photos/mist.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                    <img src="~/Images/photos/paris.jpg" style="width:100%">
-                </div>
+            }
+            @*<div class="column">
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/wedding.jpg" style="width:100%">
             </div>
-            <div class="column">
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                    <img src="~/Images/photos/paris.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
-                    <img src="~/Images/photos/ocean.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                    <img src="~/Images/photos/nature.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
-                    <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
-                </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                <img src="~/Images/photos/paris.jpg" style="width:100%">
             </div>
-            <div class="column">
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                    <img src="~/Images/photos/paris.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                    <img src="~/Images/photos/nature.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                    <img src="~/Images/photos/mist.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
-                </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/falls2.jpg'></a>
+                <img src="~/Images/photos/falls2.jpg" style="width:100%">
             </div>
-            <div class="column">
-                 <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                    <img src="~/Images/photos/mist.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
-                    <img src="~/Images/photos/ocean.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                    <img src="~/Images/photos/nature.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                    <img src="~/Images/photos/mist.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
-                </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                <img src="~/Images/photos/nature.jpg" style="width:100%">
             </div>
-            <div class="column">
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
-                    <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
-                    <img src="~/Images/photos/ocean.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                    <img src="~/Images/photos/nature.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
-                    <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
-                </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                <img src="~/Images/photos/mist.jpg" style="width:100%">
             </div>
-            <div class="column">
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                    <img src="~/Images/photos/paris.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                    <img src="~/Images/photos/wedding.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                    <img src="~/Images/photos/nature.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                    <img src="~/Images/photos/mist.jpg" style="width:100%">
-                </div>
-                <div class="item-thumbs mb-0">
-                    <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                    <img src="~/Images/photos/underwater.jpg" style="width:100%">
-                </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                <img src="~/Images/photos/paris.jpg" style="width:100%">
             </div>
+        </div>
+        <div class="column">
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                <img src="~/Images/photos/paris.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
+                <img src="~/Images/photos/ocean.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/wedding.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                <img src="~/Images/photos/nature.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
+                <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                <img src="~/Images/photos/underwater.jpg" style="width:100%">
+            </div>
+        </div>
+        <div class="column">
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/underwater.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                <img src="~/Images/photos/paris.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/wedding.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                <img src="~/Images/photos/nature.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                <img src="~/Images/photos/mist.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                <img src="~/Images/photos/underwater.jpg" style="width:100%">
+            </div>
+        </div>
+        <div class="column">
+             <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                <img src="~/Images/photos/mist.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
+                <img src="~/Images/photos/ocean.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/wedding.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                <img src="~/Images/photos/nature.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                <img src="~/Images/photos/mist.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                <img src="~/Images/photos/underwater.jpg" style="width:100%">
+            </div>
+        </div>
+        <div class="column">
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
+                <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
+                <img src="~/Images/photos/ocean.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/wedding.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                <img src="~/Images/photos/nature.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
+                <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                <img src="~/Images/photos/underwater.jpg" style="width:100%">
+            </div>
+        </div>
+        <div class="column">
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/wedding.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
+                <img src="~/Images/photos/paris.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
+                <img src="~/Images/photos/wedding.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
+                <img src="~/Images/photos/nature.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
+                <img src="~/Images/photos/mist.jpg" style="width:100%">
+            </div>
+            <div class="item-thumbs mb-0">
+                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
+                <img src="~/Images/photos/underwater.jpg" style="width:100%">
+            </div>
+        </div>*@
         </div>
     </div>
 </div>
@@ -393,18 +406,18 @@
 
                     <input type="submit" value="Submit" />
                 </form> -->
-                <form id="contact-form" class="contact-form" action="#">
+                <form id="contact-form" class="contact-form" action="/admin/sendemail" method="post">
                     <p class="contact-name">
-                        <input id="contact_name" type="text" placeholder="Full Name" value="" name="name" />
+                        <input id="name" type="text" placeholder="Full Name" value="" name="name" />
                     </p>
                     <p class="contact-email">
-                        <input id="contact_email" type="text" placeholder="Email Address" value="" name="email" />
+                        <input id="email" type="text" placeholder="Email Address" value="" name="email" />
                     </p>
                     <p class="contact-message">
-                        <textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40"></textarea>
+                        <textarea id="contact" placeholder="Your Message" name="contact" rows="15" cols="40"></textarea>
                     </p>
                     <p class="contact-submit">
-                        <a id="contact-submit" class="submit" href="">Send Your Email</a>
+                        <button class="submit">Send Your Email</button>
                     </p>
 
                     <div id="response">

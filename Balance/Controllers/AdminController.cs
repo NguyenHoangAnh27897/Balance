@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
 namespace Balance.Controllers
 {
@@ -313,6 +316,33 @@ namespace Balance.Controllers
                 string mess = ex.Message.ToString();
             }
             return rs;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SendEmail(string name, string email, string contact)
+        {
+            var body = "<p>Thông tin khách hàng</p><p>{2}</p>";
+            var message = new MailMessage();
+            message.To.Add(new MailAddress("bal@bal.vn"));  // replace with valid value 
+            message.From = new MailAddress("a3solution.cuscontact@gmail.com");  // replace with valid value
+            message.Subject = "Liên hệ từ khách hàng";
+            message.Body = string.Format(body, "Khách hàng có để lại lời nhắn", email, "Thông tin khách hàng: "+name+"<br> Địa chỉ Mail: "+email+"<br> Lời nhắn: "+ contact);
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "a3solution.cuscontact@gmail.com",  // replace with valid value
+                    Password = "<.*Mf79pBF8nhh]v"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+                return RedirectToAction("Index","Home");
+            }
         }
     }
 }
