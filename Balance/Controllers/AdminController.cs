@@ -22,12 +22,26 @@ namespace Balance.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            if(Session["Authentication"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
         }
 
         public ActionResult CSQLBL()
         {
-            return View();
+            if (Session["Authentication"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
         }
 
         [HttpPost]
@@ -63,7 +77,14 @@ namespace Balance.Controllers
 
         public ActionResult CSQLL()
         {
-            return View();
+            if (Session["Authentication"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
         }
 
         [HttpPost]
@@ -79,8 +100,16 @@ namespace Balance.Controllers
 
         public ActionResult CSQLP()
         {
-            ViewBag.Type = loadCbo();
-            return View();
+            
+            if (Session["Authentication"] != null)
+            {
+                ViewBag.Type = loadCbo();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
         }
 
        [HttpPost]
@@ -126,6 +155,7 @@ namespace Balance.Controllers
             {
                 if (pass.Contains("1234"))
                 {
+                    Session["Authentication"] = "True";
                     return RedirectToAction("Index","Admin");
                 }
             }
@@ -134,37 +164,61 @@ namespace Balance.Controllers
 
         public ActionResult QLBL()
         {
-            Connection();
-            string strSql = "Select * from balancelife";
+            if (Session["Authentication"] != null)
+            {
+                Connection();
+                string strSql = "Select * from balancelife";
 
-            da = new OleDbDataAdapter(strSql, cn);
-            dt = new DataTable();
-            da.Fill(dt);
-            cn.Close();
-            return View(dt);
+                da = new OleDbDataAdapter(strSql, cn);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+                return View(dt);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+           
         }
 
         public ActionResult QLL()
         {
-            Connection();
-            string strSql = "Select * from loai";
-            da = new OleDbDataAdapter(strSql, cn);
-            dt = new DataTable();   
-            da.Fill(dt);
-            cn.Close();
-            return View(dt);
+            if (Session["Authentication"] != null)
+            {
+                Connection();
+                string strSql = "Select * from loai";
+
+                da = new OleDbDataAdapter(strSql, cn);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+                return View(dt);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
         }
 
         public ActionResult QLP()
         {
-            Connection();
-            string strSql = "Select * from project";
+            if (Session["Authentication"] != null)
+            {
+                Connection();
+                string strSql = "Select * from project";
 
-            da = new OleDbDataAdapter(strSql, cn);
-            dt = new DataTable();
-            da.Fill(dt);
-            cn.Close();
-            return View(dt);
+                da = new OleDbDataAdapter(strSql, cn);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+                return View(dt);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+           
         }
 
         protected void Connection()
