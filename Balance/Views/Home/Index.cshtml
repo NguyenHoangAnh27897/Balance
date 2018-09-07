@@ -1,14 +1,30 @@
 ﻿@model System.Data.DataTable
 @using System.Data
+@using System.Data.OleDb;
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/Content/Style/gridgallery.css" rel="stylesheet">
-    <link href="~/Content/Style/modal.css" rel="stylesheet">
-    <!-- hover black-white-->
-    <link href="~/Content/Style/global.css" rel="stylesheet">
-    int i = 6;
-    int j = 0;
+Layout = "~/Views/Shared/_Layout.cshtml";
+<link href="~/Content/Style/gridgallery.css" rel="stylesheet">
+<link href="~/Content/Style/modal.css" rel="stylesheet">
+<!-- hover black-white-->
+<link href="~/Content/Style/global.css" rel="stylesheet">
+    string[] arrStr;
+    string[] arrImg;
+
+    string strCn = "Provider=Microsoft.Jet.OLEDB.4.0;";
+    strCn += "Data Source=" + Server.MapPath("~/App_Data/Balance.mdb");
+    OleDbConnection cn = new OleDbConnection(strCn);
+    if (cn.State != ConnectionState.Open)
+    {
+        cn.Open();
+    }
+    string sql = "select * from project";
+    OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);
+    DataTable dt = new DataTable();
+    da.Fill(dt);
+    int i = 1;
+    int j = 1;
+    string id = "";
 }
 <!-- Our Work Section -->
 <div id="work" class="page" name="work">
@@ -19,7 +35,7 @@
                 <div class="title-page">
                     <h2 class="title">Project</h2>
                     <!-- <h3 class="title-description">Check Out Our Projects on <a href="#">Balance</a>.</h3> -->
-                   
+
                 </div>
             </div>
         </div>
@@ -36,7 +52,7 @@
                                 <li class="type-work">Type of Work</li>
                                 <li><a href="#filter" data-option-value="*" class="selected">All Projects</a></li>
                                 @*<li><a href="#filter" data-option-value="*">Design</a></li>
-                                <li><a href="#filter" data-option-value="*">Home</a></li>*@
+                                    <li><a href="#filter" data-option-value="*">Home</a></li>*@
                                 @Html.Raw(ViewBag.MenuLeft)
                             </ul>
                         </nav>
@@ -44,69 +60,20 @@
                     </div>
                     <div class="col-lg-8" style="float:right;width:1000px">
                         <div class="row1">
-                            @*<div class="column">
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
-                                </div>
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
-                                </div>
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/falls2.jpg' alt='image-02-full.jpg'>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
-                                </div>
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
-                                </div>
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/falls2.jpg' alt='image-02-full.jpg'>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/wedding.jpg' alt='image-02-full.jpg'>
-                                </div>
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/paris.jpg' alt='image-02-full.jpg'>
-                                </div>
-                                <div class="item-thumbs mb-0 blackandwhite design">
-                                    <a class='hover-wrap' data-toggle="modal" data-target="#myModal">
-                                        <span class='overlay-img-thumb'></span>
-                                    </a>
-                                    <img src='~/Images/photos/falls2.jpg' alt='image-02-full.jpg'>
-                                </div>
-                            </div>*@
                             @Html.Raw(ViewBag.Project)
                         </div>
                     </div>
+                    <script>
+                                              // Get just and <a> elements
+                        var anchors = document.querySelectorAll("a");
+
+                        // Set up a click event listener for each one
+                        for (var i = 0; i < anchors.length; i++) {
+                            anchors[i].addEventListener("click", function (evt) {
+                                var imgid = evt.target.id;
+                                console.log(imgid);
+                            });
+                    </script>
                 </div>
             </div>
         </div>
@@ -128,35 +95,51 @@
                 <div class="parentSlides">
                     <div class="col-sm-12 col-md-10 col-lg-10 ">
                         <div class="row">
-                            <div class="mySlides">
-                                <div class="numbertext">1 / 6</div>
-                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-                            </div>
+                            @foreach (System.Data.DataRow row in dt.Rows)
+                            {
+                                if (row.ItemArray[0].ToString().Equals("10"))
+                                {
+                                    if (row.ItemArray[4].ToString().Contains(","))
+                                    {
+                                        arrImg = row.ItemArray[4].ToString().Split(',');
+                                        foreach (var item in arrImg)
+                                        {
+                                            <div class="mySlides">
+                                                <div class="numbertext">@i / @arrImg.Length</div>
+                                                <img class="img-large" src="~/Images/photos/@item">
+                                            </div>
+                                            i++;
+                                        }
+                                    }
+                                }
 
-                            <div class="mySlides">
-                                <div class="numbertext">2 / 6</div>
-                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-                            </div>
+                            }
 
-                            <div class="mySlides">
-                                <div class="numbertext">3 / 6</div>
-                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-                            </div>
+                            
+                            @*<div class="mySlides">
+            <div class="numbertext">2 / 6</div>
+            <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+        </div>
 
-                            <div class="mySlides">
-                                <div class="numbertext">4 / 6</div>
-                                <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-                            </div>
+        <div class="mySlides">
+            <div class="numbertext">3 / 6</div>
+            <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+        </div>
 
-                            <div class="mySlides">
-                                <div class="numbertext">5 / 6</div>
-                                <img class="img-large" src="~/Images/photos/image-02-full.jpg">
-                            </div>
+        <div class="mySlides">
+            <div class="numbertext">4 / 6</div>
+            <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+        </div>
 
-                            <div class="mySlides">
-                                <div class="numbertext">6 / 6</div>
-                                <img class="img-large" src="~/Images/photos/image-02-full.jpg">
-                            </div>
+        <div class="mySlides">
+            <div class="numbertext">5 / 6</div>
+            <img class="img-large" src="~/Images/photos/image-02-full.jpg">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">6 / 6</div>
+            <img class="img-large" src="~/Images/photos/image-02-full.jpg">
+        </div>*@
 
                             <a class="prev" onclick="plusSlides(-1)">❮</a>
                             <a class="next" onclick="plusSlides(1)">❯</a>
@@ -165,27 +148,43 @@
                                 <p id="caption"></p>
                             </div>
                         </div>
-                     </div>
+                    </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 pl-2">
                         <div class="row">
-                            <div class="columnB">
-                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(1)" alt="Balance 1">
-                            </div>
-                            <div class="columnB">
-                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(2)" alt="Balance 2">
-                            </div>
-                            <div class="columnB">
-                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(3)" alt="Balance 3">
-                            </div>
-                            <div class="columnB">
-                                <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(4)" alt="Balance 4">
-                            </div>
-                            <div class="columnB">
-                                <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(5)" alt="Balance 5">
-                            </div>
-                            <div class="columnB">
-                                <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(6)" alt="Balance 6">
-                            </div>
+                            @foreach (System.Data.DataRow row in dt.Rows)
+                            {
+                                if (row.ItemArray[0].ToString().Equals("10"))
+                                {
+                                    if (row.ItemArray[4].ToString().Contains(","))
+                                    {
+                                        arrImg = row.ItemArray[4].ToString().Split(',');
+                                        foreach (var item in arrImg)
+                                        {
+                                            <div class="columnB">
+                                                <img class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+                                            </div>
+                                            j++;
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            @*<div class="columnB">
+            <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(2)" alt="Balance 2">
+        </div>
+        <div class="columnB">
+            <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(3)" alt="Balance 3">
+        </div>
+        <div class="columnB">
+            <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(4)" alt="Balance 4">
+        </div>
+        <div class="columnB">
+            <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(5)" alt="Balance 5">
+        </div>
+        <div class="columnB">
+            <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(6)" alt="Balance 6">
+        </div>*@
                         </div>
                     </div>
 
@@ -214,169 +213,31 @@
         <div class="row1">
             @foreach (System.Data.DataRow row in Model.Rows)
             {
-                <div class="column">
-                    <div class="item-thumbs mb-0">
-                         <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/@row.ItemArray[4].ToString()'></a>
+                if (row.ItemArray[4].ToString().Contains(","))
+                {
+                    arrStr = row.ItemArray[4].ToString().Split(',');
+                    foreach (var item in arrStr)
+                    {
+                        <div class="column">
+                            <div class="item-thumbs mb-0">
+                                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/@item'></a>
+                                <img src="~/Images/photos/@item" style="width:100%">
+                            </div>
+                        </div>
+                    }
+
+                }
+                else
+                {
+                    <div class="column">
+                        <div class="item-thumbs mb-0">
+                            <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/@row.ItemArray[4].ToString()'></a>
                             <img src="~/Images/photos/@row.ItemArray[4].ToString()" style="width:100%">
-                     </div>
-                </div>
+                        </div>
+                    </div>
+                }
+
             }
-            @*<div class="column">
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/wedding.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                <img src="~/Images/photos/paris.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/falls2.jpg'></a>
-                <img src="~/Images/photos/falls2.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                <img src="~/Images/photos/nature.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                <img src="~/Images/photos/mist.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                <img src="~/Images/photos/paris.jpg" style="width:100%">
-            </div>
-        </div>
-        <div class="column">
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                <img src="~/Images/photos/paris.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
-                <img src="~/Images/photos/ocean.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/wedding.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                <img src="~/Images/photos/nature.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
-                <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                <img src="~/Images/photos/underwater.jpg" style="width:100%">
-            </div>
-        </div>
-        <div class="column">
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/underwater.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                <img src="~/Images/photos/paris.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/wedding.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                <img src="~/Images/photos/nature.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                <img src="~/Images/photos/mist.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                <img src="~/Images/photos/underwater.jpg" style="width:100%">
-            </div>
-        </div>
-        <div class="column">
-             <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                <img src="~/Images/photos/mist.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
-                <img src="~/Images/photos/ocean.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/wedding.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                <img src="~/Images/photos/nature.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                <img src="~/Images/photos/mist.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                <img src="~/Images/photos/underwater.jpg" style="width:100%">
-            </div>
-        </div>
-        <div class="column">
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
-                <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/ocean.jpg'></a>
-                <img src="~/Images/photos/ocean.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/wedding.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                <img src="~/Images/photos/nature.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mountainskies.jpg'></a>
-                <img src="~/Images/photos/mountainskies.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                <img src="~/Images/photos/underwater.jpg" style="width:100%">
-            </div>
-        </div>
-        <div class="column">
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/wedding.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/paris.jpg'></a>
-                <img src="~/Images/photos/paris.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/wedding.jpg'></a>
-                <img src="~/Images/photos/wedding.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/nature.jpg'></a>
-                <img src="~/Images/photos/nature.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/mist.jpg'></a>
-                <img src="~/Images/photos/mist.jpg" style="width:100%">
-            </div>
-            <div class="item-thumbs mb-0">
-                <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/underwater.jpg'></a>
-                <img src="~/Images/photos/underwater.jpg" style="width:100%">
-            </div>
-        </div>*@
         </div>
     </div>
 </div>
@@ -497,28 +358,31 @@
     showSlides(slideIndex);
 
     function plusSlides(n) {
-      showSlides(slideIndex += n);
+        showSlides(slideIndex += n);
     }
 
     function currentSlide(n) {
-      showSlides(slideIndex = n);
+        showSlides(slideIndex = n);
     }
 
     function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
-      var captionText = document.getElementById("caption");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-      captionText.innerHTML = dots[slideIndex-1].alt;
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+
+  
     }
 </script>

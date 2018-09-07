@@ -67,19 +67,25 @@ namespace Balance.Controllers
             da = new OleDbDataAdapter(sql, cn);
             dt = new DataTable();
             da.Fill(dt);
-            int i = 3;
-            int j = 0;
+            string myDiv = "myDiv";
+            int i = 1;
             if (dt.Rows.Count > 0 && dt != null)
             {
+                data += "<section id='projects' style='width: 100%'>";
                 foreach (DataRow dr in dt.Rows)
                 {
+                    myDiv += i;               
                     data += "<div class='column' style='flex:30%;'>";   
-                    data += "<div class='item-thumbs mb-0 blackandwhite " + dr["type"].ToString() + "'>";
-                    data += "<a class='hover-wrap' data-toggle='modal' data-target='#myModal'>";
+                    data += "<div class='item-thumbs span3 blackandwhite " + dr["type"].ToString() + "'>";
+                    data += "<a id='" + myDiv + "' class='hover-wrap' data-toggle='modal' data-target='#myModal'>";
                     data += "<span class='overlay-img-thumb'></span>";
                     data += "</a>";
-                    data += "<img src='Images/photos/" + dr["IMG"].ToString() + "' alt=''></div></div>";
+                    data += "<img src='Images/photos/" + dr["Avatar"].ToString() + "' alt=''></div></div>";
+                    Session["myDiv" + i] = dr["IDproject"].ToString();
+                    i++;
+                    myDiv = myDiv.Remove(myDiv.Length - 1);
                 }
+                data += "</section>";
             }
             return data;
         }

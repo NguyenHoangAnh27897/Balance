@@ -29,7 +29,7 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Thêm Dự án</h4>
+                                <h4>Chỉnh sửa Balance Life</h4>
                             </div>
                         </div>
 
@@ -37,40 +37,54 @@
                             <form action="/admin/EditBL" method="post" enctype="multipart/form-data">
                                 @foreach (System.Data.DataRow row in Model.Rows)
                                 {
-                                <div class="form-group" style="display:none"><input type="text" name="ID" value="@row.ItemArray[0].ToString()"/></div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tittle Project</label>
-                                    @*<asp:TextBox ID="TextBox1" class="form-control" placeholder="ex: Project" runat="server"></asp:TextBox>*@
-                                    <input type="text" class="form-control" placeholder="@row.ItemArray[1].ToString()" name="title">
-                                </div>
+                                    <div class="form-group" style="display:none"><input type="text" name="ID" value="@row.ItemArray[0].ToString()" /></div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput4">Tittle Balance Life</label>
+                                        @*<asp:TextBox ID="TextBox1" class="form-control" placeholder="ex: Project" runat="server"></asp:TextBox>*@
+                                        <input type="text" class="form-control" placeholder="@row.ItemArray[1].ToString()" name="title">
+                                    </div>
 
-                                        arrStr = row.ItemArray[4].ToString().Split(',');
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Example file input</label>
-                                    <br />
-                                    <input type="file" name="images" accept="image/*" multiple="multiple" />
-                                    @foreach (var img in arrStr)
+
+                                    if (row.ItemArray[4].ToString().Contains(","))
                                     {
-                                        <img src="~/Images/photos/@img" style="width:100%" />
+                                        arrStr = row.ItemArray[4].ToString().Split(',');
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Images</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                            @foreach (var img in arrStr)
+                                            {
+                                                <img src="~/Images/photos/@img" style="width:100%" />
+                                            }
+                                        </div>
                                     }
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Nội dung</label>
-                                    @*<FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" BasePath="~/fckeditor/" Height="400px" ToolbarSet="Buukute" Width="100%">
-                                        </FCKeditorV2:FCKeditor>*@
-                                    <br />
-                                    <textarea name="editor" id="editor" rows="50" cols="80">@Html.Raw(row.ItemArray[3].ToString())</textarea>
-                                </div>
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Images</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                                <img src="~/Images/photos/@row.ItemArray[4].ToString()" style="width:100%" />
+                                        </div>
+                                    }
 
-                                <div class="form-group">
-                                    <label class="form-check-label"><input type="checkbox" name="hide" value="true" />Hide</label>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Nội dung</label>
+                                        @*<FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" BasePath="~/fckeditor/" Height="400px" ToolbarSet="Buukute" Width="100%">
+                </FCKeditorV2:FCKeditor>*@
+                                        <br />
+                                        <textarea name="editor" id="editor" rows="50" cols="80">@Html.Raw(row.ItemArray[3].ToString())</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-check-label"><input type="checkbox" name="hide" value="true" />Hide</label>
 
 
-                                </div>
+                                    </div>
 
-                                @*<asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" OnClick="Button1_Click" />
-                                    <asp:Button ID="Button2" runat="server" Text="Cancel" class="btn btn-primary" OnClick="Button2_Click" />*@
-                                <button class="btn btn-primaryt">Submit</button>
+                                    @*<asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" runat="server" Text="Cancel" class="btn btn-primary" OnClick="Button2_Click" />*@
+                                    <button class="btn btn-primaryt">Submit</button>
                                 }
                             </form>
                         </div>

@@ -27,7 +27,7 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Thêm Dự án</h4>
+                                <h4>Thêm Project</h4>
                             </div>
                         </div>
 
@@ -35,7 +35,7 @@
                             <form action="/admin/addqlp" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tittle Project</label>
+                                    <label for="exampleFormControlInput4">Titile Project</label>
                                     @*<asp:TextBox ID="TextBox1" class="form-control" placeholder="ex: Project" runat="server"></asp:TextBox>*@
                                     <input type="text" class="form-control" placeholder="" name="title">
                                 </div>
@@ -46,32 +46,38 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlFile1">Example file input</label>
-                                    <br />
-                                    <input type="file" name="images" accept="image/*" multiple="multiple"/>
-                                    @*<asp:Image ID="Image1" runat="server" class="form-control-file" Height="250px" Width="200px" />
-        <asp:FileUpload ID="FileUpload1" class="form-control-file" runat="server" />*@
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Nội dung</label>
-                                    @*<FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" BasePath="~/fckeditor/" Height="400px" ToolbarSet="Buukute" Width="100%">
-        </FCKeditorV2:FCKeditor>*@
-                                    <br />
-                                    <textarea name="editor" id="editor" rows="50" cols="80"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-check-label"><input type="checkbox" name="hide" value="true"/>Hide</label>
-
-
-                                </div>
-
-                                @*<asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" OnClick="Button1_Click" />
-                                    <asp:Button ID="Button2" runat="server" Text="Cancel" class="btn btn-primary" OnClick="Button2_Click" />*@
-                                <button class="btn btn-primaryt">Submit</button>
-                            </form>
+                                <label for="exampleFormControlFile1">Avatar</label>
+                                <br />
+                                <input type="file" name="avatar" accept="image/*" />
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Images</label>
+                            <br />
+                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                            @*<asp:Image ID="Image1" runat="server" class="form-control-file" Height="250px" Width="200px" />
+            <asp:FileUpload ID="FileUpload1" class="form-control-file" runat="server" />*@
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Nội dung</label>
+                            @*<FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" BasePath="~/fckeditor/" Height="400px" ToolbarSet="Buukute" Width="100%">
+            </FCKeditorV2:FCKeditor>*@
+                            <br />
+                            <textarea name="editor" id="editor" rows="50" cols="80"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-check-label"><input type="checkbox" name="hide" value="true" />Hide</label>
+
+
+                        </div>
+
+                        @*<asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" OnClick="Button1_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Cancel" class="btn btn-primary" OnClick="Button2_Click" />*@
+                        <button class="btn btn-primaryt">Submit</button>
+                        </form>
+                    </div>
 
                     </div>
                 </div>

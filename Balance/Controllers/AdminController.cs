@@ -57,22 +57,28 @@ namespace Balance.Controllers
             {
                 chk = "True";
             }
+           
+
             string Images = "";
-            foreach(HttpPostedFileBase file in images)
+            if(images != null)
             {
-                if (file.ContentLength > 0)
+                foreach (HttpPostedFileBase file in images)
                 {
-                    var filename = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
-                    file.SaveAs(path);
-                    Images += file.FileName + ",";
+                    if (file.ContentLength > 0)
+                    {
+                        var filename = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
+                        file.SaveAs(path);
+                        Images += file.FileName + ",";
+                    }
                 }
             }
-           
+
+            Images = Images.Remove(Images.Length - 1);
             Connection();
             string sql = "";
             sql = "insert into balancelife(IDblife,Tittleblife,Hide,Description,IMG)";
-            sql += "values('" + getGUID().ToString() + "','" + title + "'," + chk + ",'" + editor + "','" + Images + "')";
+            sql += "values('" + getGUID().ToString() + "','" + title + "'," + chk + ",'" + editor + "','" + Images +"')";
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
@@ -118,7 +124,7 @@ namespace Balance.Controllers
 
        [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddQLP(string title, HttpPostedFileBase[] images, string editor, bool hide = false, string cboType="")
+        public ActionResult AddQLP(string title, HttpPostedFileBase avatar, HttpPostedFileBase[] images, string editor, bool hide = false, string cboType="")
         {
             String chk = "";
             if (hide == false)
@@ -129,20 +135,38 @@ namespace Balance.Controllers
             {
                 chk = "True";
             }
-            string Images = "";
-            foreach (HttpPostedFileBase file in images)
+            string Avatar = "";
+            if (avatar != null)
             {
-                if (file.ContentLength > 0)
+                if (avatar.ContentLength > 0)
                 {
-                    var filename = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
-                    file.SaveAs(path);
-                    Images += file.FileName + ",";
+                    var filename = Path.GetFileName(avatar.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/photos"), avatar.FileName);
+                    avatar.SaveAs(path);
+                    Avatar += avatar.FileName;
                 }
-            } 
+
+            }
+
+            string Images = "";
+            if(images != null)
+            {
+                foreach (HttpPostedFileBase file in images)
+                {
+                    if (file.ContentLength > 0)
+                    {
+                        var filename = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
+                        file.SaveAs(path);
+                        Images += file.FileName + ",";
+                    }
+                }
+            }
+            Images = Images.Remove(Images.Length - 1);
+            Connection();
             string sql = "";
-            sql = "insert into project(IDproject,Tittleproject,Hide,Description,IMG,type)";
-            sql += "values('" + getGUID().ToString() + "','" + title + "'," + chk + ",'" + editor + "','" + Images + "','" + cboType + "')";
+            sql = "insert into project(IDproject,Tittleproject,Hide,Description,IMG,type,Avatar)";
+            sql += "values('" + getGUID().ToString() + "','" + title + "'," + chk + ",'" + editor + "','" + Images + "','" + cboType + "','" + Avatar +  "')";
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
@@ -259,6 +283,7 @@ namespace Balance.Controllers
             {
                 chk = "True";
             }
+
             string Images = ",";
             if(images != null)
             {
@@ -273,7 +298,7 @@ namespace Balance.Controllers
                     }
                 }
             }
-           
+            Images = Images.Remove(Images.Length - 1);
             Connection();
             string sql = "";
             if (Images != "")
@@ -303,7 +328,7 @@ namespace Balance.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditQLP(string ID,string title, HttpPostedFileBase[] images, string editor, bool hide = false, string cboType = "")
+        public ActionResult EditQLP(string ID,string title, HttpPostedFileBase avatar, HttpPostedFileBase[] images, string editor, bool hide = false, string cboType = "")
         {
             string chk = "";
             if (hide == false)
@@ -314,6 +339,19 @@ namespace Balance.Controllers
             {
                 chk = "True";
             }
+            string Avatar = "";
+            if (Avatar != null)
+            {
+                if (avatar.ContentLength > 0)
+                {
+                    var filename = Path.GetFileName(avatar.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/photos"), avatar.FileName);
+                    avatar.SaveAs(path);
+                    Avatar += avatar.FileName;
+                }
+            }
+
+
             string Images = ",";
             if(images != null)
             {
@@ -328,12 +366,12 @@ namespace Balance.Controllers
                     }
                 }
             }
-           
+            Images = Images.Remove(Images.Length - 1);
             Connection();
             string sql = "";
             if (Images != "")
             {
-                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',IMG='" + Images + "',type='" + cboType + "' where IDproject='" + ID + "'";
+                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',IMG='" + Images + "',type='" + cboType + "',Avatar='" + Avatar + "' where IDproject='" + ID + "'";
                 //sql += " where IDmanga='" + Request.Params["id"].ToString() + "'";
             }
             else
