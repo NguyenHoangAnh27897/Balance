@@ -46,7 +46,7 @@ namespace Balance.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddBL(string title, HttpPostedFileBase images, string editor, bool hide = false)
+        public ActionResult AddBL(string title, HttpPostedFileBase[] images, string editor, bool hide = false)
         {
             string chk = "";
             if(hide == false)
@@ -58,13 +58,17 @@ namespace Balance.Controllers
                 chk = "True";
             }
             string Images = "";
-            if (images.ContentLength > 0)
+            foreach(HttpPostedFileBase file in images)
             {
-                var filename = Path.GetFileName(images.FileName);
-                var path = Path.Combine(Server.MapPath("~/Images/photos"), images.FileName);
-                images.SaveAs(path);
-                Images = images.FileName;
+                if (file.ContentLength > 0)
+                {
+                    var filename = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
+                    file.SaveAs(path);
+                    Images += file.FileName + ",";
+                }
             }
+           
             Connection();
             string sql = "";
             sql = "insert into balancelife(IDblife,Tittleblife,Hide,Description,IMG)";
@@ -114,7 +118,7 @@ namespace Balance.Controllers
 
        [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddQLP(string title, HttpPostedFileBase images, string editor, bool hide = false, string cboType="")
+        public ActionResult AddQLP(string title, HttpPostedFileBase[] images, string editor, bool hide = false, string cboType="")
         {
             String chk = "";
             if (hide == false)
@@ -126,14 +130,16 @@ namespace Balance.Controllers
                 chk = "True";
             }
             string Images = "";
-            if (images.ContentLength > 0)
+            foreach (HttpPostedFileBase file in images)
             {
-                var filename = Path.GetFileName(images.FileName);
-                var path = Path.Combine(Server.MapPath("~/Images/photos"), images.FileName);
-                images.SaveAs(path);
-                Images = images.FileName;
-            }
-            Connection();
+                if (file.ContentLength > 0)
+                {
+                    var filename = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
+                    file.SaveAs(path);
+                    Images += file.FileName + ",";
+                }
+            } 
             string sql = "";
             sql = "insert into project(IDproject,Tittleproject,Hide,Description,IMG,type)";
             sql += "values('" + getGUID().ToString() + "','" + title + "'," + chk + ",'" + editor + "','" + Images + "','" + cboType + "')";
@@ -242,7 +248,7 @@ namespace Balance.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditBL(string ID,string title, HttpPostedFileBase images, string editor, bool hide = false)
+        public ActionResult EditBL(string ID,string title, HttpPostedFileBase[] images, string editor, bool hide = false)
         {
             string chk = "";
             if (hide == false)
@@ -253,15 +259,18 @@ namespace Balance.Controllers
             {
                 chk = "True";
             }
-            string Images = "";
+            string Images = ",";
             if(images != null)
             {
-                if (images.ContentLength > 0)
+                foreach (HttpPostedFileBase file in images)
                 {
-                    var filename = Path.GetFileName(images.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images/photos"), images.FileName);
-                    images.SaveAs(path);
-                    Images = images.FileName;
+                    if (file.ContentLength > 0)
+                    {
+                        var filename = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
+                        file.SaveAs(path);
+                        Images += file.FileName + ",";
+                    }
                 }
             }
            
@@ -294,7 +303,7 @@ namespace Balance.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditQLP(string ID,string title, HttpPostedFileBase images, string editor, bool hide = false, string cboType = "")
+        public ActionResult EditQLP(string ID,string title, HttpPostedFileBase[] images, string editor, bool hide = false, string cboType = "")
         {
             string chk = "";
             if (hide == false)
@@ -305,15 +314,18 @@ namespace Balance.Controllers
             {
                 chk = "True";
             }
-            string Images = "";
+            string Images = ",";
             if(images != null)
             {
-                if (images.ContentLength > 0)
+                foreach (HttpPostedFileBase file in images)
                 {
-                    var filename = Path.GetFileName(images.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images/photos"), images.FileName);
-                    images.SaveAs(path);
-                    Images = images.FileName;
+                    if (file.ContentLength > 0)
+                    {
+                        var filename = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/photos"), file.FileName);
+                        file.SaveAs(path);
+                        Images += file.FileName + ",";
+                    }
                 }
             }
            

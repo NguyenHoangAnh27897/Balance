@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "ECSQLP";
     Layout = "~/Views/Shared/_LayoutBackend.cshtml";
+    string[] arrStr;
 }
 
 <div class="main-wrapper">
@@ -48,13 +49,17 @@
                                         @Html.Raw(ViewBag.Type)
                                     </div>
 
+                                        arrStr = row.ItemArray[4].ToString().Split(',');
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Example file input</label>
                                         <br />
-                                        <input type="file" name="images" accept="image/*" />
-                                        <img src="~/Images/photos/@row.ItemArray[4].ToString()" style="width:100%" />
+                                        <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                        @foreach (var img in arrStr)
+                                        {
+                                            <img src="~/Images/photos/@img" style="width:100%" />
+                                        }
                                         @*<asp:Image ID="Image1" runat="server" class="form-control-file" Height="250px" Width="200px" />
-                <asp:FileUpload ID="FileUpload1" class="form-control-file" runat="server" />*@
+        <asp:FileUpload ID="FileUpload1" class="form-control-file" runat="server" />*@
                                     </div>
 
                                     <div class="form-group">

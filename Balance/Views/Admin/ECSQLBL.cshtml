@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "ECSQLBL";
     Layout = "~/Views/Shared/_LayoutBackend.cshtml";
+    string[] arrStr;
 }
 
 <div class="main-wrapper">
@@ -43,13 +44,16 @@
                                     <input type="text" class="form-control" placeholder="@row.ItemArray[1].ToString()" name="title">
                                 </div>
 
+                                        arrStr = row.ItemArray[4].ToString().Split(',');
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Example file input</label>
                                     <br />
-                                    <input type="file" name="images" accept="image/*" />
-                                    <img src="~/Images/photos/@row.ItemArray[4].ToString()" style="width:100%"/>
+                                    <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                    @foreach (var img in arrStr)
+                                    {
+                                        <img src="~/Images/photos/@img" style="width:100%" />
+                                    }
                                 </div>
-
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Nội dung</label>
                                     @*<FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" BasePath="~/fckeditor/" Height="400px" ToolbarSet="Buukute" Width="100%">
