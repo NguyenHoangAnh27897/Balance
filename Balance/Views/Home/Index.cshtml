@@ -3,11 +3,11 @@
 @using System.Data.OleDb;
 @{
     ViewBag.Title = "Index";
-Layout = "~/Views/Shared/_Layout.cshtml";
-<link href="~/Content/Style/gridgallery.css" rel="stylesheet">
-<link href="~/Content/Style/modal.css" rel="stylesheet">
-<!-- hover black-white-->
-<link href="~/Content/Style/global.css" rel="stylesheet">
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Style/gridgallery.css" rel="stylesheet">
+    <link href="~/Content/Style/modal.css" rel="stylesheet">
+    <!-- hover black-white-->
+    <link href="~/Content/Style/global.css" rel="stylesheet">
     string[] arrStr;
     string[] arrImg;
 
@@ -63,17 +63,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                             @Html.Raw(ViewBag.Project)
                         </div>
                     </div>
-                    <script>
-                                              // Get just and <a> elements
-                        var anchors = document.querySelectorAll("a");
 
-                        // Set up a click event listener for each one
-                        for (var i = 0; i < anchors.length; i++) {
-                            anchors[i].addEventListener("click", function (evt) {
-                                var imgid = evt.target.id;
-                                console.log(imgid);
-                            });
-                    </script>
                 </div>
             </div>
         </div>
@@ -115,31 +105,31 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
                             }
 
-                            
+
                             @*<div class="mySlides">
-            <div class="numbertext">2 / 6</div>
-            <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-        </div>
+                                    <div class="numbertext">2 / 6</div>
+                                    <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+                                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">3 / 6</div>
-            <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-        </div>
+                                <div class="mySlides">
+                                    <div class="numbertext">3 / 6</div>
+                                    <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+                                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">4 / 6</div>
-            <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-        </div>
+                                <div class="mySlides">
+                                    <div class="numbertext">4 / 6</div>
+                                    <img class="img-large" src="~/Images/photos/image-01-full.jpg">
+                                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">5 / 6</div>
-            <img class="img-large" src="~/Images/photos/image-02-full.jpg">
-        </div>
+                                <div class="mySlides">
+                                    <div class="numbertext">5 / 6</div>
+                                    <img class="img-large" src="~/Images/photos/image-02-full.jpg">
+                                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">6 / 6</div>
-            <img class="img-large" src="~/Images/photos/image-02-full.jpg">
-        </div>*@
+                                <div class="mySlides">
+                                    <div class="numbertext">6 / 6</div>
+                                    <img class="img-large" src="~/Images/photos/image-02-full.jpg">
+                                </div>*@
 
                             <a class="prev" onclick="plusSlides(-1)">❮</a>
                             <a class="next" onclick="plusSlides(1)">❯</a>
@@ -171,20 +161,20 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                             }
 
                             @*<div class="columnB">
-            <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(2)" alt="Balance 2">
-        </div>
-        <div class="columnB">
-            <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(3)" alt="Balance 3">
-        </div>
-        <div class="columnB">
-            <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(4)" alt="Balance 4">
-        </div>
-        <div class="columnB">
-            <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(5)" alt="Balance 5">
-        </div>
-        <div class="columnB">
-            <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(6)" alt="Balance 6">
-        </div>*@
+                                    <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(2)" alt="Balance 2">
+                                </div>
+                                <div class="columnB">
+                                    <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(3)" alt="Balance 3">
+                                </div>
+                                <div class="columnB">
+                                    <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(4)" alt="Balance 4">
+                                </div>
+                                <div class="columnB">
+                                    <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(5)" alt="Balance 5">
+                                </div>
+                                <div class="columnB">
+                                    <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(6)" alt="Balance 6">
+                                </div>*@
                         </div>
                     </div>
 
@@ -352,8 +342,9 @@ Layout = "~/Views/Shared/_Layout.cshtml";
         </div>
     </div>
 </div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <!-- End Socialize -->
-<script>
+<script type="text/javascript">
     var slideIndex = 1;
     showSlides(slideIndex);
 
@@ -383,6 +374,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
 
-  
+    var myClick = (e) => {
+        console.log(e.getAttribute('id'));
     }
 </script>

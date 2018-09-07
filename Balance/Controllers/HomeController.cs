@@ -77,7 +77,7 @@ namespace Balance.Controllers
                     myDiv += i;               
                     data += "<div class='column' style='flex:30%;'>";   
                     data += "<div class='item-thumbs span3 blackandwhite " + dr["type"].ToString() + "'>";
-                    data += "<a id='" + myDiv + "' class='hover-wrap' data-toggle='modal' data-target='#myModal'>";
+                    data += "<a id='" + myDiv + "' class='hover-wrap' onclick='myClick(this);' data-toggle='modal' data-target='#myModal'>";
                     data += "<span class='overlay-img-thumb'></span>";
                     data += "</a>";
                     data += "<img src='Images/photos/" + dr["Avatar"].ToString() + "' alt=''></div></div>";
