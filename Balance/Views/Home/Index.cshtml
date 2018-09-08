@@ -24,7 +24,7 @@
     da.Fill(dt);
     int i = 1;
     int j = 1;
-    string id = "";
+    
 }
 <!-- Our Work Section -->
 <div id="work" class="page" name="work">
@@ -87,50 +87,26 @@
                         <div class="row">
                             @foreach (System.Data.DataRow row in dt.Rows)
                             {
-                                if (row.ItemArray[0].ToString().Equals("10"))
+                                if (row.ItemArray[4].ToString().Contains(","))
                                 {
-                                    if (row.ItemArray[4].ToString().Contains(","))
+                                    arrImg = row.ItemArray[4].ToString().Split(',');
+                                    foreach (var item in arrImg)
                                     {
-                                        arrImg = row.ItemArray[4].ToString().Split(',');
-                                        foreach (var item in arrImg)
-                                        {
-                                            <div class="mySlides">
-                                                <div class="numbertext">@i / @arrImg.Length</div>
-                                                <img class="img-large" src="~/Images/photos/@item">
-                                            </div>
-                                            i++;
-                                        }
+                                        <div class="mySlides">
+                                            <div class="numbertext">@i / @arrImg.Length</div>
+                                            <img class="img-large" src="~/Images/photos/@item">
+                                        </div>
+                                        i++;
                                     }
                                 }
-
+                                else
+                                {
+                                    <div class="mySlides">
+                                        <div class="numbertext">1 / 1</div>
+                                        <img class="img-large" src="~/Images/photos/@row.ItemArray[4].ToString()">
+                                    </div>
+                                }
                             }
-
-
-                            @*<div class="mySlides">
-                                    <div class="numbertext">2 / 6</div>
-                                    <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-                                </div>
-
-                                <div class="mySlides">
-                                    <div class="numbertext">3 / 6</div>
-                                    <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-                                </div>
-
-                                <div class="mySlides">
-                                    <div class="numbertext">4 / 6</div>
-                                    <img class="img-large" src="~/Images/photos/image-01-full.jpg">
-                                </div>
-
-                                <div class="mySlides">
-                                    <div class="numbertext">5 / 6</div>
-                                    <img class="img-large" src="~/Images/photos/image-02-full.jpg">
-                                </div>
-
-                                <div class="mySlides">
-                                    <div class="numbertext">6 / 6</div>
-                                    <img class="img-large" src="~/Images/photos/image-02-full.jpg">
-                                </div>*@
-
                             <a class="prev" onclick="plusSlides(-1)">❮</a>
                             <a class="next" onclick="plusSlides(1)">❯</a>
 
@@ -143,38 +119,26 @@
                         <div class="row">
                             @foreach (System.Data.DataRow row in dt.Rows)
                             {
-                                if (row.ItemArray[0].ToString().Equals("10"))
+                                if (row.ItemArray[4].ToString().Contains(","))
                                 {
-                                    if (row.ItemArray[4].ToString().Contains(","))
+                                    arrImg = row.ItemArray[4].ToString().Split(',');
+                                    foreach (var item in arrImg)
                                     {
-                                        arrImg = row.ItemArray[4].ToString().Split(',');
-                                        foreach (var item in arrImg)
-                                        {
-                                            <div class="columnB">
-                                                <img class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
-                                            </div>
-                                            j++;
-                                        }
+                                        <div class="columnB">
+                                            <img data-id="@row.ItemArray[0].ToString()" class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+                                        </div>
+                                        j++;
                                     }
+                                }
+                                else
+                                {
+                                    <div class="columnB">
+                                        <img data-id="@row.ItemArray[0].ToString()" class="demo cursor img-small" src="~/Images/photos/@row.ItemArray[4].ToString()" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+                                    </div>
+                                    j++;
                                 }
 
                             }
-
-                            @*<div class="columnB">
-                                    <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(2)" alt="Balance 2">
-                                </div>
-                                <div class="columnB">
-                                    <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(3)" alt="Balance 3">
-                                </div>
-                                <div class="columnB">
-                                    <img class="demo cursor img-small" src="~/Images/photos/image-01-full.jpg" onclick="currentSlide(4)" alt="Balance 4">
-                                </div>
-                                <div class="columnB">
-                                    <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(5)" alt="Balance 5">
-                                </div>
-                                <div class="columnB">
-                                    <img class="demo cursor img-small" src="~/Images/photos/image-02-full.jpg" onclick="currentSlide(6)" alt="Balance 6">
-                                </div>*@
                         </div>
                     </div>
 
@@ -374,7 +338,14 @@
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
 
-    var myClick = (e) => {
-        console.log(e.getAttribute('id'));
-    }
+    $(document).ready(function () {
+        $('.idName').click((e) => {
+            e.preventDefault();
+            $('.columnB').find("img.img-small").css("display", "none");
+            var idDiv = e.target.id.replace(/myDiv/, '').toString();
+            $('.columnB').find(`img[data-id=${idDiv}]`).css("display", "unset");
+        });
+    });
+    
+
 </script>

@@ -398,7 +398,7 @@ namespace Balance.Controllers
                 data += "<select name='cboType' class='form-control'>";
                 foreach (DataRow dr in dt.Rows)
                 {
-                    data += "<option value='" + dr["IDloai"].ToString() + "'>" + dr["typename"].ToString() + "</option>";
+                    data += "<option value='" + dr["typename"].ToString() + "'>" + dr["typename"].ToString() + "</option>";
                 }
                 data += "</select>";
             }
@@ -447,6 +447,24 @@ namespace Balance.Controllers
                 await smtp.SendMailAsync(message);
                 return RedirectToAction("Index","Home");
             }
+        }
+
+        public ActionResult deleteProject(string id)
+        {
+            Connection();   // connection        
+            string sql = "delete from project where IDproject='" + id + "'";    // hàm SQL
+            cmd = new OleDbCommand(sql, cn);    //command query
+            cmd.ExecuteNonQuery();      //thực hiện query
+            return RedirectToAction("QLP","Admin");
+        }
+
+        public ActionResult deleteBalanceLife(string id)
+        {
+            Connection();   // connection        
+            string sql = "delete from balancelife where IDblife='" + id + "'";    // hàm SQL
+            cmd = new OleDbCommand(sql, cn);    //command query
+            cmd.ExecuteNonQuery();      //thực hiện query
+            return RedirectToAction("QLP", "Admin");
         }
     }
 }
