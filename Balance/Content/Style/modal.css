@@ -40,7 +40,7 @@
 .img-small {
     width: 185px;
     height: 86px;
-    display: none;
+    /*display: none;*/
 }
 
 /* Next & previous buttons */
@@ -79,6 +79,10 @@
     padding: 8px 12px;
     position: absolute;
     top: 0;
+}
+
+#all-img {
+    display: none;
 }
 
 /* Container for image text */

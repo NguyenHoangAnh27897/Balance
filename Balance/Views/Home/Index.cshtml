@@ -84,29 +84,26 @@
             <div class="modal-body modal-custom clearfix">
                 <div class="parentSlides">
                     <div class="col-sm-12 col-md-10 col-lg-10 ">
-                        <div class="row">
-                            @foreach (System.Data.DataRow row in dt.Rows)
-                            {
-                                if (row.ItemArray[4].ToString().Contains(","))
-                                {
-                                    arrImg = row.ItemArray[4].ToString().Split(',');
-                                    foreach (var item in arrImg)
-                                    {
+                        <div id="modalLargeImg" class="row">
+                           @foreach (System.Data.DataRow row in dt.Rows)
+                           {
+                               if (row.ItemArray[0].ToString().Equals("10"))
+                               {
+                                   if (row.ItemArray[4].ToString().Contains(","))
+                                   {
+                                       arrImg = row.ItemArray[4].ToString().Split(',');
+                                       foreach (var item in arrImg)
+                                       {
                                         <div class="mySlides">
                                             <div class="numbertext">@i / @arrImg.Length</div>
                                             <img class="img-large" src="~/Images/photos/@item">
                                         </div>
                                         i++;
-                                    }
-                                }
-                                else
-                                {
-                                    <div class="mySlides">
-                                        <div class="numbertext">1 / 1</div>
-                                        <img class="img-large" src="~/Images/photos/@row.ItemArray[4].ToString()">
-                                    </div>
-                                }
-                            }
+                                       }
+                                   }
+                               }
+
+                           }
                             <a class="prev" onclick="plusSlides(-1)">❮</a>
                             <a class="next" onclick="plusSlides(1)">❯</a>
 
@@ -116,26 +113,22 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 pl-2">
-                        <div class="row">
+                        <div id="modalsmallImg" class="row">
                             @foreach (System.Data.DataRow row in dt.Rows)
                             {
-                                if (row.ItemArray[4].ToString().Contains(","))
+                                if (row.ItemArray[0].ToString().Equals("10"))
                                 {
-                                    arrImg = row.ItemArray[4].ToString().Split(',');
-                                    foreach (var item in arrImg)
+                                    if (row.ItemArray[4].ToString().Contains(","))
                                     {
-                                        <div class="columnB">
-                                            <img data-id="@row.ItemArray[0].ToString()" class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
-                                        </div>
-                                        j++;
+                                        arrImg = row.ItemArray[4].ToString().Split(',');
+                                        foreach (var item in arrImg)
+                                        {
+                                            <div class="columnB">
+                                                <img class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+                                            </div>
+                                            j++;
+                                        }
                                     }
-                                }
-                                else
-                                {
-                                    <div class="columnB">
-                                        <img data-id="@row.ItemArray[0].ToString()" class="demo cursor img-small" src="~/Images/photos/@row.ItemArray[4].ToString()" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
-                                    </div>
-                                    j++;
                                 }
 
                             }
@@ -284,6 +277,35 @@
     </div>
 </div>
 <!-- End Twitter Feed -->
+
+@*all img start*@
+
+<div id="all-img">
+    @foreach (System.Data.DataRow row in dt.Rows)
+    {
+        if (row.ItemArray[4].ToString().Contains(","))
+        {
+            arrImg = row.ItemArray[4].ToString().Split(',');
+            foreach (var item in arrImg)
+            {
+                <div class="columnB @row.ItemArray[0].ToString()">
+                    <img class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+                </div>
+                j++;
+            }
+        }
+        else
+        {
+            <div class="columnB @row.ItemArray[0].ToString()">
+                <img class="demo cursor img-small" src="~/Images/photos/@row.ItemArray[4].ToString()" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+            </div>
+            j++;
+        }
+
+    }
+</div>
+
+@*all img end*@
 <!-- Socialize -->
 <div id="social-area" class="page">
     <div class="container">
@@ -306,7 +328,7 @@
         </div>
     </div>
 </div>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
 <!-- End Socialize -->
 <script type="text/javascript">
     var slideIndex = 1;
@@ -339,13 +361,32 @@
     }
 
     $(document).ready(function () {
+        const $smallImg = $('div#modalsmallImg');
+        const $largeImg = $('div#modalLargeImg');
+        const $allImg = $('#all-img div.columnB');
+        const urlPage = window.location.href;
+        
         $('.idName').click((e) => {
             e.preventDefault();
-            $('.columnB').find("img.img-small").css("display", "none");
-            var idDiv = e.target.id.replace(/myDiv/, '').toString();
-            $('.columnB').find(`img[data-id=${idDiv}]`).css("display", "unset");
+            let count = 0;
+            var parent = e.target.getAttribute("data-id").replace(/myDiv/, '');
+            var numberImg = $('#all-img').children('.' + parent);
+
+            $smallImg.children('div.columnB').remove();
+            $largeImg.children().remove();
+
+            $allImg.each((index, el) => {
+                let dataID = el.getAttribute('class').split(' ')[1];
+                if (dataID == parent) {
+                    $smallImg.append(el);
+                    let uio = `<div class="mySlides" style="${(count++ == 0) ? 'display: block;' : ''}"><div class="numbertext">${count} / ${numberImg.length}</div><img class="img-large" src="${urlPage.slice(0, urlPage.lastIndexOf('/')) + el.childNodes[1].getAttribute('src')}"></div>`;
+                    $largeImg.append(uio);
+                }
+            });
+            const actionLink = `<a class="prev" onclick="plusSlides(-1)">❮</a><a class="next" onclick="plusSlides(1)">❯</a><div class="caption-container"><p id="caption"></p></div>`;
+            $largeImg.append(actionLink);
+            $smallImg.children('div.columnB:first').children().trigger("click");
         });
     });
-    
-
 </script>
+s
