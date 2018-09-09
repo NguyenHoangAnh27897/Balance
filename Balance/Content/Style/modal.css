@@ -12,12 +12,16 @@
 
 .pl-2 {
     margin-left: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Position the image container (needed to position the left and right arrows) */
 .parentSlides {
     position: relative;
     display: flex;
+    height: 77vh;
+    overflow: hidden;
 }
 
 /* Hide the images by default */
