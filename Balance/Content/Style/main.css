@@ -1330,6 +1330,19 @@ footer .credits {
 	}
 }
 
+.grid {
+    column-count: 6;
+    -moz-column-count: 6;
+    -webkit-column-count: 6;
+    column-gap: 5px;
+    -webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    
+}
+
+.grid .single_grid {
+    margin-bottom: 5px;
+}
 
 /* ==================================================
    Isotope Filtering

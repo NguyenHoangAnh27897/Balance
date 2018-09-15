@@ -103,14 +103,6 @@
     clear: both;
 }
 
-/* Six columns side by side */
-.columnB {
-    /*float: left;*/
-    /*display: flex;
-            flex-direction: column;
-            width: 16.66%;*/
-}
-
 /* Add a transparency effect for thumnbail images */
 .demo {
     opacity: 0.6;

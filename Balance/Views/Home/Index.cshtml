@@ -157,7 +157,7 @@
         </div>
         <!-- End Title Page -->
         <!-- Photo Grid -->
-        <div class="row1">
+        <div class="row grid">
             @foreach (System.Data.DataRow row in Model.Rows)
             {
                 if (row.ItemArray[4].ToString().Contains(","))
@@ -165,7 +165,7 @@
                     arrStr = row.ItemArray[4].ToString().Split(',');
                     foreach (var item in arrStr)
                     {
-                        <div class="column">
+                        <div class="single_grid">
                             <div class="item-thumbs mb-0">
                                 <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/@item'></a>
                                 <img src="~/Images/photos/@item" style="width:100%">
@@ -176,7 +176,7 @@
                 }
                 else
                 {
-                    <div class="column">
+                    <div class="single_grid">
                         <div class="item-thumbs mb-0">
                             <a class='hover-wrap fancybox' data-fancybox-group='gallery' title='' href='~/Images/photos/@row.ItemArray[4].ToString()'></a>
                             <img src="~/Images/photos/@row.ItemArray[4].ToString()" style="width:100%">
