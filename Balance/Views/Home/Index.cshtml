@@ -368,11 +368,15 @@
 
         $('.filterType').bind('click', function () {
             var nameFilter = $(this).data('option');
-            $('#projects').each(function () {
+            $('.single_gridFilter').each(function () {
                 if ($(this).hasClass(nameFilter)) {
                     $(this).show(500);
                 } else {
-                    $(this).hide(500);
+                    if(nameFilter != "*") {
+                        $(this).hide(500);
+                    } else {
+                        $('.single_gridFilter').show(500);
+                    }
                 }
             });
             event.preventDefault();
