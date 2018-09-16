@@ -4,6 +4,7 @@
     ViewBag.Title = "EditSlider";
     Layout = "~/Views/Shared/_LayoutBackend.cshtml";
     int i = 1;
+    string slider = "slider";
 }
 
 <div class="main-wrapper">
@@ -40,7 +41,10 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Slider @i</label>
                                     <br />
-                                    <input type="file" name="slider1" accept="image/*" multiple="multiple" />
+                                    @{
+                                        slider = slider + i.ToString();
+                                    }
+                                    <input type="file" name="@slider" accept="image/*" multiple="multiple" />
                                     <img src="~/Images/slider/@row.ItemArray[1].ToString()" style="width:50%" />
                                 </div>
                                 i++;

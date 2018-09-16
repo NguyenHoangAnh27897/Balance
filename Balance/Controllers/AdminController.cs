@@ -328,6 +328,7 @@ namespace Balance.Controllers
         {
             if (Session["Authentication"] != null)
             {
+                ViewBag.Type = loadCbo();
                 Connection();
                 string sql = "select * from project where IDproject='" + id.ToString() + "'";
                 da = new OleDbDataAdapter(sql, cn);
@@ -356,7 +357,7 @@ namespace Balance.Controllers
                 chk = "True";
             }
             string Avatar = "";
-            if (Avatar != null)
+            if (avatar != null)
             {
                 if (avatar.ContentLength > 0)
                 {
@@ -368,7 +369,7 @@ namespace Balance.Controllers
             }
 
 
-            string Images = ",";
+            string Images = "";
             if(images != null)
             {
                 foreach (HttpPostedFileBase file in images)
@@ -384,11 +385,14 @@ namespace Balance.Controllers
             }
             Images = Images.Remove(Images.Length - 1);
             Connection();
-            string sql = "";
+            string sql = "";        
             if (Images != "")
             {
-                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',IMG='" + Images + "',type='" + cboType + "',Avatar='" + Avatar + "' where IDproject='" + ID + "'";
+                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',IMG='" + Images + "',type='" + cboType + "' where IDproject='" + ID + "'";
                 //sql += " where IDmanga='" + Request.Params["id"].ToString() + "'";
+            }else if(Avatar != "")
+            {
+                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',Avatar='" + Avatar + "',type='" + cboType + "' where IDproject='" + ID + "'";
             }
             else
             {
@@ -500,10 +504,54 @@ namespace Balance.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult EditSlider(string slider1, string slider2, string slider3, string slider4)
-        //{
-        //    return RedirectToAction("","");
-        //}
+        [HttpPost]
+        public ActionResult EditSlider(HttpPostedFileBase slider1, HttpPostedFileBase slider12, HttpPostedFileBase slider123, HttpPostedFileBase slider1234)
+        {
+            if(slider1 != null)
+            {
+                if (slider1.ContentLength > 0)
+                {
+                    var filename = "image01.jpg";
+                    var path = Path.Combine(Server.MapPath("~/Images/slider"), filename);
+                    System.IO.File.Delete(path);
+                    slider1.SaveAs(path);
+                }
+            }
+              
+            if(slider12 != null)
+            {
+                if (slider12.ContentLength > 0)
+                {
+                    var filename = "image02.jpg";
+                    var path = Path.Combine(Server.MapPath("~/Images/slider"), filename);
+                    System.IO.File.Delete(path);
+                    slider12.SaveAs(path);
+                }
+            }
+           
+            if(slider123 != null)
+            {
+                if (slider123.ContentLength > 0)
+                {
+                    var filename = "image03.jpg";
+                    var path = Path.Combine(Server.MapPath("~/Images/slider"), filename);
+                    System.IO.File.Delete(path);
+                    slider123.SaveAs(path);
+                }
+            }
+          
+            if(slider1234 != null)
+            {
+                if (slider1234.ContentLength > 0)
+                {
+                    var filename = "image04.jpg";
+                    var path = Path.Combine(Server.MapPath("~/Images/slider"), filename);
+                    System.IO.File.Delete(path);
+                    slider1234.SaveAs(path);
+                }
+            }
+           
+            return RedirectToAction("Index", "Admin");
+        }
     }
 }
