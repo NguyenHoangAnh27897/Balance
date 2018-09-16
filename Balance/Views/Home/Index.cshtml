@@ -288,10 +288,10 @@
             arrImg = row.ItemArray[4].ToString().Split(',');
             foreach (var item in arrImg)
             {
+
                 <div class="columnB @row.ItemArray[0].ToString()">
                     <img class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
                 </div>
-                j++;
             }
         }
         else
@@ -299,7 +299,6 @@
             <div class="columnB @row.ItemArray[0].ToString()">
                 <img class="demo cursor img-small" src="~/Images/photos/@row.ItemArray[4].ToString()" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
             </div>
-            j++;
         }
 
     }
