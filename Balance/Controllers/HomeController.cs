@@ -53,7 +53,7 @@ namespace Balance.Controllers
             {
                 foreach (DataRow dr in dt.Rows)
                 {
-                    data += "<li><a href='#filter' data-option-value='." + dr["typename"].ToString() + " '> " + dr["typename"].ToString() + "</a></li>";
+                    data += "<li><a href='#filter' class='filterType' data-option='" + dr["typename"].ToString() + " '> " + dr["typename"].ToString() + "</a></li>";
                 }
             }
             return data;
@@ -75,8 +75,8 @@ namespace Balance.Controllers
                 foreach (DataRow dr in dt.Rows)
                 {
                     myDiv += i;               
-                    data += "<div class='single_gridFilter'>";   
-                    data += "<div class='item-thumbs " + dr["type"].ToString() + "'>";
+                    data += "<div class='single_gridFilter" +dr["type"].ToString() +"'>";   
+                    data += "<div class='item-thumbs'>";
                     data += "<a class='hover-wrap idName' data-id='"+ myDiv + "' data-toggle='modal' data-target='#myModal'>";
                     data += "<span class='overlay-img-thumb'></span>";
                     data += "</a>";

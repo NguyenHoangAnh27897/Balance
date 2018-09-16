@@ -48,9 +48,9 @@
                     <div class="col-lg-2" style="float:left;">
                         <!-- Filter -->
                         <nav id="options" class="work-nav">
-                            <ul id="filters" class="option-set" data-option-key="filter">
+                            <ul id="filters" class="option-set">
                                 <li class="type-work">Type of Work</li>
-                                <li><a href="#filter" data-option-value="*" class="selected">All Projects</a></li>
+                                <li><a href="#filter" data-option="*" class="filterType">All Projects</a></li>
                                 @*<li><a href="#filter" data-option-value="*">Design</a></li>
                                     <li><a href="#filter" data-option-value="*">Home</a></li>*@
                                 @Html.Raw(ViewBag.MenuLeft)
@@ -365,6 +365,18 @@
         const $largeImg = $('div#modalLargeImg');
         const $allImg = $('#all-img div.columnB');
         const urlPage = window.location.href;
+
+        $('.filterType').bind('click', function () {
+            var nameFilter = $(this).data('option');
+            $('#projects').each(function () {
+                if ($(this).hasClass(nameFilter)) {
+                    $(this).show(500);
+                } else {
+                    $(this).hide(500);
+                }
+            });
+            event.preventDefault();
+        });
         
         $('.idName').click((e) => {
             e.preventDefault();
