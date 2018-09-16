@@ -75,8 +75,8 @@ namespace Balance.Controllers
                 foreach (DataRow dr in dt.Rows)
                 {
                     myDiv += i;               
-                    data += "<div class='column' style='flex:30%;'>";   
-                    data += "<div class='item-thumbs span3 blackandwhite " + dr["type"].ToString() + "'>";
+                    data += "<div class='single_gridFilter'>";   
+                    data += "<div class='item-thumbs " + dr["type"].ToString() + "'>";
                     data += "<a class='hover-wrap idName' data-id='"+ myDiv + "' data-toggle='modal' data-target='#myModal'>";
                     data += "<span class='overlay-img-thumb'></span>";
                     data += "</a>";

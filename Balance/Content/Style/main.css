@@ -723,7 +723,7 @@ nav#menu #menu-nav li a:hover {
 .item-thumbs {
     position: relative;
     overflow: hidden;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
     cursor: pointer;
 }
 
@@ -1341,6 +1341,20 @@ footer .credits {
 }
 
 .grid .single_grid {
+    margin-bottom: 5px;
+}
+
+.gridFilter {
+    column-count: 5;
+    -moz-column-count: 5;
+    -webkit-column-count: 5;
+    column-gap: 5px;
+    -webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    
+}
+
+.gridFilter .single_gridFilter {
     margin-bottom: 5px;
 }
 
