@@ -838,6 +838,7 @@
     <Content Include="Views\Admin\QLP.cshtml" />
     <Content Include="Views\Admin\ECSQLBL.cshtml" />
     <Content Include="Views\Admin\ECSQLP.cshtml" />
+    <Content Include="Views\Admin\EditSlider.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

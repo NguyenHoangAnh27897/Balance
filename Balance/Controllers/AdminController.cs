@@ -262,12 +262,20 @@ namespace Balance.Controllers
 
         public ActionResult ECSQLBL(int id)
         {
-            Connection();
-            string sql = "select * from balancelife where IDblife='" + id.ToString() + "'";
-            da = new OleDbDataAdapter(sql, cn);
-            dt = new DataTable();
-            da.Fill(dt);
-            return View(dt);
+            if (Session["Authentication"] != null)
+            {
+                Connection();
+                string sql = "select * from balancelife where IDblife='" + id.ToString() + "'";
+                da = new OleDbDataAdapter(sql, cn);
+                dt = new DataTable();
+                da.Fill(dt);
+                return View(dt);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+         
         }
 
         [HttpPost]
@@ -318,12 +326,20 @@ namespace Balance.Controllers
 
         public ActionResult ECSQLP(string id)
         {
-            Connection();
-            string sql = "select * from project where IDproject='" + id.ToString() + "'";
-            da = new OleDbDataAdapter(sql, cn);
-            dt = new DataTable();
-            da.Fill(dt);
-            return View(dt);
+            if (Session["Authentication"] != null)
+            {
+                Connection();
+                string sql = "select * from project where IDproject='" + id.ToString() + "'";
+                da = new OleDbDataAdapter(sql, cn);
+                dt = new DataTable();
+                da.Fill(dt);
+                return View(dt);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+         
         }
 
         [HttpPost]
@@ -466,5 +482,28 @@ namespace Balance.Controllers
             cmd.ExecuteNonQuery();      //thực hiện query
             return RedirectToAction("QLP", "Admin");
         }
+
+        public ActionResult EditSlider()
+        {
+            if (Session["Authentication"] != null)
+            {
+                Connection();
+                string sql = "select * from slider";
+                da = new OleDbDataAdapter(sql, cn);
+                dt = new DataTable();
+                da.Fill(dt);
+                return View(dt);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+        }
+
+        //[HttpPost]
+        //public ActionResult EditSlider(string slider1, string slider2, string slider3, string slider4)
+        //{
+        //    return RedirectToAction("","");
+        //}
     }
 }

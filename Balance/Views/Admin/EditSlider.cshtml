@@ -1,0 +1,63 @@
+﻿@model System.Data.DataTable
+@using System.Data
+@{
+    ViewBag.Title = "EditSlider";
+    Layout = "~/Views/Shared/_LayoutBackend.cshtml";
+    int i = 1;
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin/index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Quản lý Slider</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Start form -->
+        <div class="form-area">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Chỉnh sửa Slider</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/admin/editslider" method="post" enctype="multipart/form-data">
+                                @foreach (System.Data.DataRow row in Model.Rows)
+                                {
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Slider @i</label>
+                                    <br />
+                                    <input type="file" name="slider1" accept="image/*" multiple="multiple" />
+                                    <img src="~/Images/slider/@row.ItemArray[1].ToString()" style="width:50%" />
+                                </div>
+                                i++;
+                                }
+                                    <button class="btn btn-primaryt">Submit</button>
+                                
+                                </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
