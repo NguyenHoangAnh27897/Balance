@@ -236,7 +236,7 @@ namespace Balance.Controllers
             if (Session["Authentication"] != null)
             {
                 Connection();
-                string strSql = "Select * from project";
+                string strSql = "Select * from project order by IDproject";
 
                 da = new OleDbDataAdapter(strSql, cn);
                 dt = new DataTable();

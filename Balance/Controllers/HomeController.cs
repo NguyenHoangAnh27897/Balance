@@ -63,7 +63,7 @@ namespace Balance.Controllers
         {
             string data = "";
             Connection();
-            string sql = "select * from project";
+            string sql = "select * from project order by IDproject";
             da = new OleDbDataAdapter(sql, cn);
             dt = new DataTable();
             da.Fill(dt);
