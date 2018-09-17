@@ -197,7 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\WebMasterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -636,6 +636,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\logobuu.png" />
     <Content Include="Images\filter-icon.png" />
     <Content Include="Images\filter-icon_%402x.png" />
     <Content Include="Images\icon\if_cancel-2_309095.png" />
@@ -828,17 +829,17 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutBackend.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Admin\CSQLBL.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\CSQLL.cshtml" />
-    <Content Include="Views\Admin\CSQLP.cshtml" />
-    <Content Include="Views\Admin\QLBL.cshtml" />
-    <Content Include="Views\Admin\QLL.cshtml" />
-    <Content Include="Views\Admin\Login.cshtml" />
-    <Content Include="Views\Admin\QLP.cshtml" />
-    <Content Include="Views\Admin\ECSQLBL.cshtml" />
-    <Content Include="Views\Admin\ECSQLP.cshtml" />
-    <Content Include="Views\Admin\EditSlider.cshtml" />
+    <Content Include="Views\WebMaster\CSQLBL.cshtml" />
+    <Content Include="Views\WebMaster\Index.cshtml" />
+    <Content Include="Views\WebMaster\CSQLL.cshtml" />
+    <Content Include="Views\WebMaster\CSQLP.cshtml" />
+    <Content Include="Views\WebMaster\QLBL.cshtml" />
+    <Content Include="Views\WebMaster\QLL.cshtml" />
+    <Content Include="Views\WebMaster\Login.cshtml" />
+    <Content Include="Views\WebMaster\QLP.cshtml" />
+    <Content Include="Views\WebMaster\ECSQLBL.cshtml" />
+    <Content Include="Views\WebMaster\ECSQLP.cshtml" />
+    <Content Include="Views\WebMaster\EditSlider.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

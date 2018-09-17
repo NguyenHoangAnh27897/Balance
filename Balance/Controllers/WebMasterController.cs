@@ -12,14 +12,14 @@ using System.Net;
 
 namespace Balance.Controllers
 {
-    public class AdminController : Controller
+    public class WebMasterController : Controller
     {
         protected OleDbDataAdapter da;
         protected OleDbConnection cn;
         protected DataTable dt;
         protected DataTable dts;
         protected OleDbCommand cmd;
-        // GET: Admin
+        // GET: WebMaster
         public ActionResult Index()
         {
             if(Session["Authentication"] != null)
@@ -28,7 +28,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
         }
 
@@ -40,7 +40,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
         }
 
@@ -82,7 +82,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "WebMaster");
         }
 
         public ActionResult CSQLL()
@@ -93,7 +93,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
         }
 
@@ -105,7 +105,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "WebMaster");
         }
 
         public ActionResult CSQLP()
@@ -118,7 +118,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
         }
 
@@ -166,11 +166,11 @@ namespace Balance.Controllers
             Connection();
             string sql = "";
             sql = "insert into project(IDproject,Tittleproject,Hide,Description,IMG,type,Avatar)";
-            sql += "values('" + getGUID().ToString() + "','" + title + "'," + chk + ",'" + editor + "','" + Images + "','" + cboType + "','" + Avatar +  "')";
+            sql += "values('" + getid() + "','" + title + "'," + chk + ",'" + editor + "','" + Images + "','" + cboType + "','" + Avatar +  "')";
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "WebMaster");
         }
 
         public ActionResult Login()
@@ -186,7 +186,7 @@ namespace Balance.Controllers
                 if (pass.Contains("1234"))
                 {
                     Session["Authentication"] = "True";
-                    return RedirectToAction("Index","Admin");
+                    return RedirectToAction("Index","WebMaster");
                 }
             }
             return RedirectToAction("Error");
@@ -207,7 +207,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
            
         }
@@ -227,7 +227,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
         }
 
@@ -246,7 +246,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
            
         }
@@ -273,7 +273,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
          
         }
@@ -321,7 +321,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "WebMaster");
         }
 
         public ActionResult ECSQLP(string id)
@@ -338,7 +338,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
          
         }
@@ -401,7 +401,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "WebMaster");
         }
 
 
@@ -442,6 +442,21 @@ namespace Balance.Controllers
             return rs;
         }
 
+        public string getid()
+        {
+            string rs = "";
+            Connection();
+            Connection();
+            string sql = "select IDproject from project";
+            da = new OleDbDataAdapter(sql, cn);
+            dt = new DataTable();
+            da.Fill(dt);
+            int count = dt.Rows.Count;
+            count += 1;
+            rs += count.ToString();
+            return rs;
+        }
+
         [HttpPost]
         public async Task<ActionResult> SendEmail(string name, string email, string contact)
         {
@@ -475,7 +490,7 @@ namespace Balance.Controllers
             string sql = "delete from project where IDproject='" + id + "'";    // hàm SQL
             cmd = new OleDbCommand(sql, cn);    //command query
             cmd.ExecuteNonQuery();      //thực hiện query
-            return RedirectToAction("QLP","Admin");
+            return RedirectToAction("QLP","WebMaster");
         }
 
         public ActionResult deleteBalanceLife(string id)
@@ -484,7 +499,7 @@ namespace Balance.Controllers
             string sql = "delete from balancelife where IDblife='" + id + "'";    // hàm SQL
             cmd = new OleDbCommand(sql, cn);    //command query
             cmd.ExecuteNonQuery();      //thực hiện query
-            return RedirectToAction("QLP", "Admin");
+            return RedirectToAction("QLP", "WebMaster");
         }
 
         public ActionResult EditSlider()
@@ -500,7 +515,7 @@ namespace Balance.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "WebMaster");
             }
         }
 
@@ -551,7 +566,7 @@ namespace Balance.Controllers
                 }
             }
            
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "WebMaster");
         }
     }
 }

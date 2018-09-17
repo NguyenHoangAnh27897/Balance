@@ -1,7 +1,7 @@
 ﻿@model System.Data.DataTable
 @using System.Data
 @{
-    ViewBag.Title = "QLL";
+    ViewBag.Title = "QLP";
     Layout = "~/Views/Shared/_LayoutBackend.cshtml";
 }
 
@@ -13,8 +13,8 @@
             <div class="col-lg-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin/index">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Quản lý Loại</li>
+                        <li class="breadcrumb-item"><a href="/webmaster/index" ">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Quản lý Dự án</li>
                     </ol>
                 </nav>
             </div>
@@ -27,7 +27,7 @@
                     <div class="single-table">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Danh Sách Loại</h4>
+                                <h4>progress table</h4>
                             </div>
                         </div>
                         <div class="section-body">
@@ -36,18 +36,26 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Type of Work</th>
+                                            <th>Tittle Of Project</th>
+                                            <th>Description</th>
+                                            <th>IMG</th>
+                                            <th>Type</th>
+                                            <th>Hide</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (System.Data.DataRow row in Model.Rows)
                                         {
-                                            <tr>
-                                                <td>@row.ItemArray[0].ToString()</td>
-                                                <td>@row.ItemArray[1].ToString()</td>
-                                                <td><a href="#"><img src="~/Images/icon/if_f-cross_256_282471.png" /></a></td>
-                                            </tr>
+                                        <tr>
+                                            <td>@row.ItemArray[0].ToString()</td>
+                                            <td><a href="/webmaster/ecsqlp/@row.ItemArray[0].ToString()">@row.ItemArray[1].ToString()</a></td>
+                                            <td>@row.ItemArray[3].ToString()</td>
+                                            <td>@row.ItemArray[4].ToString()</td>
+                                            <td>@row.ItemArray[5].ToString()</td>
+                                            <td><input type="checkbox" /></td>
+                                            <td><a href="/webmaster/deleteproject/@row.ItemArray[0].ToString()"><img src="~/Images/icon/if_f-cross_256_282471.png" /></a></td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -59,4 +67,3 @@
         </div>
     </div>
 </div>
-

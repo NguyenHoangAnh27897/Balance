@@ -24,7 +24,7 @@
     da.Fill(dt);
     int i = 1;
     int j = 1;
-    
+    int k = 1;
 }
 <!-- Our Work Section -->
 <div id="work" class="page" name="work">
@@ -89,8 +89,6 @@
                            {
                                if (row.ItemArray[0].ToString().Equals("10"))
                                {
-                                   if (row.ItemArray[4].ToString().Contains(","))
-                                   {
                                        arrImg = row.ItemArray[4].ToString().Split(',');
                                        foreach (var item in arrImg)
                                        {
@@ -101,7 +99,6 @@
                                         i++;
                                        }
                                    }
-                               }
 
                            }
                             <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -116,8 +113,6 @@
                         <div id="modalsmallImg" class="row">
                             @foreach (System.Data.DataRow row in dt.Rows)
                             {
-                                if (row.ItemArray[0].ToString().Equals("10"))
-                                {
                                     if (row.ItemArray[4].ToString().Contains(","))
                                     {
                                         arrImg = row.ItemArray[4].ToString().Split(',');
@@ -129,7 +124,6 @@
                                             j++;
                                         }
                                     }
-                                }
 
                             }
                         </div>
@@ -288,10 +282,10 @@
             arrImg = row.ItemArray[4].ToString().Split(',');
             foreach (var item in arrImg)
             {
-
                 <div class="columnB @row.ItemArray[0].ToString()">
                     <img class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
                 </div>
+                j++;
             }
         }
         else
@@ -299,6 +293,7 @@
             <div class="columnB @row.ItemArray[0].ToString()">
                 <img class="demo cursor img-small" src="~/Images/photos/@row.ItemArray[4].ToString()" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
             </div>
+            j++;
         }
 
     }
