@@ -106,8 +106,8 @@ BRUSHED.nav = function(){
 ================================================== */
 
 BRUSHED.filter = function (){
-    if ($('#about').length > 0) {
-        var $container = $('#about');
+    if ($('#a').length > 0) {
+        var $container = $('#a');
 		
 		//$container.imagesLoaded(function() {
 		//	$container.isotope({
