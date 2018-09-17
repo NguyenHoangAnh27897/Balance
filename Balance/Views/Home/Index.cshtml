@@ -6,6 +6,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/Content/Style/gridgallery.css" rel="stylesheet">
     <link href="~/Content/Style/modal.css" rel="stylesheet">
+    <!-- FancyBox -->
+    <link href="~/Content/Style/fancybox/jquery.fancybox.css" rel="stylesheet">
     <!-- hover black-white-->
     <link href="~/Content/Style/global.css" rel="stylesheet">
     string[] arrStr;
@@ -278,7 +280,7 @@
             foreach (var item in arrImg)
             {
                 <div class="columnB @row.ItemArray[0].ToString()">
-                    <img class="demo cursor img-small" src="~/Images/photos/@item" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+                    <img class="demo cursor img-small" src="~/Images/photos/@item" alt="@row.ItemArray[1].ToString()">
                 </div>
                 j++;
             }
@@ -286,7 +288,7 @@
         else
         {
             <div class="columnB @row.ItemArray[0].ToString()">
-                <img class="demo cursor img-small" src="~/Images/photos/@row.ItemArray[4].ToString()" onclick="currentSlide(@j)" alt="@row.ItemArray[1].ToString()">
+                <img class="demo cursor img-small" src="~/Images/photos/@row.ItemArray[4].ToString()" alt="@row.ItemArray[1].ToString()">
             </div>
             j++;
         }
@@ -318,6 +320,8 @@
     </div>
 </div>
 
+<script src="~/Scripts/jquery.isotope.js"></script> <!-- Isotope Filter -->
+<script src="~/Scripts/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
 <!-- End Socialize -->
 <script type="text/javascript">
     var slideIndex = 1;
@@ -371,26 +375,24 @@
             event.preventDefault();
         });
         
-        $('.idName').click((e) => {
-            e.preventDefault();
+        $('.idName').bind('click',function(event) {
+            event.preventDefault();
             let count = 0;
-            var parent = e.target.getAttribute("data-id").replace(/myDiv/, '');
-            var numberImg = $('#all-img').children('.' + parent);
-
-            $smallImg.children('div.columnB').remove();
+            var parent = $(this).data("id").replace(/myDiv/, '');
+            $smallImg.children().remove();
             $largeImg.children().remove();
-
-            $allImg.each((index, el) => {
-                let dataID = el.getAttribute('class').split(' ')[1];
-                if (dataID == parent) {
-                    $smallImg.append(el);
-                    let uio = `<div class="mySlides" style="${(count++ == 0) ? 'display: block;' : ''}"><div class="numbertext">${count} / ${numberImg.length}</div><img class="img-large" src="${urlPage.slice(0, urlPage.lastIndexOf('/')) + el.childNodes[1].getAttribute('src')}"></div>`;
+            $allImg.each(function() {
+                if ($(this).hasClass(parent)) {
+                    $(this).children().attr('onclick',`currentSlide(${count+1})`);
+                    let uio = `<div class="mySlides" style="${(count++ == 0) ? 'display: block;' : ''}"><div class="numbertext">${count} / <span id="fullSize"></span></div><img class="img-large" src="${urlPage.slice(0, urlPage.lastIndexOf('/')) + $(this).children().attr('src')}"></div>`;
                     $largeImg.append(uio);
+                    $smallImg.append($(this));
                 }
             });
             const actionLink = `<a class="prev" onclick="plusSlides(-1)">❮</a><a class="next" onclick="plusSlides(1)">❯</a><div class="caption-container"><p id="caption"></p></div>`;
             $largeImg.append(actionLink);
             $smallImg.children('div.columnB:first').children().trigger("click");
+            $('span#fullSize').text(count);
         });
     });
 </script>

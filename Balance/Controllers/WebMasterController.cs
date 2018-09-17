@@ -82,7 +82,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "WebMaster");
+            return RedirectToAction("QLBL", "WebMaster");
         }
 
         public ActionResult CSQLL()
@@ -105,7 +105,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "WebMaster");
+            return RedirectToAction("QLL", "WebMaster");
         }
 
         public ActionResult CSQLP()
@@ -170,7 +170,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "WebMaster");
+            return RedirectToAction("QLP", "WebMaster");
         }
 
         public ActionResult Login()
@@ -321,7 +321,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "WebMaster");
+            return RedirectToAction("QLBL", "WebMaster");
         }
 
         public ActionResult ECSQLP(int id)
@@ -401,7 +401,7 @@ namespace Balance.Controllers
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
             cn.Close();
-            return RedirectToAction("Index", "WebMaster");
+            return RedirectToAction("QLP", "WebMaster");
         }
 
 
@@ -497,7 +497,16 @@ namespace Balance.Controllers
             string sql = "delete from balancelife where IDblife='" + id + "'";    // hàm SQL
             cmd = new OleDbCommand(sql, cn);    //command query
             cmd.ExecuteNonQuery();      //thực hiện query
-            return RedirectToAction("QLP", "WebMaster");
+            return RedirectToAction("QLBL", "WebMaster");
+        }
+
+        public ActionResult deletetype(string id)
+        {
+            Connection();   // connection        
+            string sql = "delete from loai where IDloai='" + id + "'";    // hàm SQL
+            cmd = new OleDbCommand(sql, cn);    //command query
+            cmd.ExecuteNonQuery();      //thực hiện query
+            return RedirectToAction("QLL", "WebMaster");
         }
 
         public ActionResult EditSlider()

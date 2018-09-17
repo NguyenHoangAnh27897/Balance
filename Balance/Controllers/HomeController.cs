@@ -83,7 +83,22 @@ namespace Balance.Controllers
                     data += "<img src='Images/photos/" + dr["Avatar"].ToString() + "' alt=''></div></div>";
                     Session["myDiv" + i] = dr["IDproject"].ToString();
                     i++;
-                    myDiv = myDiv.Remove(myDiv.Length - 1);
+                    if (i <= 10)
+                    {
+                        myDiv = myDiv.Remove(myDiv.Length - 1);
+                    }
+                    else if (i > 10 && i <= 100)
+                    {
+                        myDiv = myDiv.Remove(myDiv.Length - 2);
+                    }
+                    else if (i > 100 && i < 1000)
+                    {
+                        myDiv = myDiv.Remove(myDiv.Length - 3);
+                    }
+                    else if (i > 1000 && i < 10000)
+                    {
+                        myDiv = myDiv.Remove(myDiv.Length - 4);
+                    }
                 }
                 data += "</section>";
             }

@@ -106,17 +106,17 @@ BRUSHED.nav = function(){
 ================================================== */
 
 BRUSHED.filter = function (){
-	if($('#projects').length > 0){		
-		var $container = $('#projects');
+    if ($('#about').length > 0) {
+        var $container = $('#about');
 		
-		$container.imagesLoaded(function() {
-			$container.isotope({
-			  // options
-			  animationEngine: 'best-available',
-			  itemSelector : '.item-thumbs',
-			  layoutMode : 'fitRows'
-			});
-		});
+		//$container.imagesLoaded(function() {
+		//	$container.isotope({
+		//	  // options
+		//	  animationEngine: 'best-available',
+		//	  itemSelector : '.item-thumbs',
+		//	  layoutMode : 'fitRows'
+		//	});
+		//});
 	
 		
 		// filter items when filter link is clicked
