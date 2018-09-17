@@ -40,7 +40,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tittle Of Project</th>
+                                            <th class="text-nowrap">Tittle Of Project</th>
                                             <th>Description</th>
                                             <th>IMG</th>
                                             <th>Hide</th>
@@ -51,8 +51,15 @@
                                         @foreach(System.Data.DataRow row in Model.Rows)
                                         {
                                         <tr>
-                                            <td>@row.ItemArray[0].ToString()</td>
-                                            <td><a href="/webmaster/ecsqlbl/@int.Parse(row.ItemArray[0].ToString())">@row.ItemArray[1].ToString()</a></td>
+                                            @if (row.ItemArray[0].ToString().Count() > 5)
+                                            {
+                                                <td>@row.ItemArray[0].ToString().Substring(0, 8)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@row.ItemArray[0].ToString()</td>
+                                            }
+                                            <td><a href="/webmaster/ecsqlbl/@row.ItemArray[0].ToString()">@row.ItemArray[1].ToString()</a></td>
                                             <td>@row.ItemArray[3].ToString()</td>
                                             <td>@row.ItemArray[4].ToString()</td>
                                             <td><input type="checkbox" /></td>
