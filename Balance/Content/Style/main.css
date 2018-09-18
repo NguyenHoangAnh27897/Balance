@@ -501,7 +501,8 @@ header .sticky-nav.stuck {
 	position: fixed;
 	top: 0;
 	left: 0;
-    background-color: #7f8289;
+    /*background-color: #7f8289;*/
+    background-color: rgba(0,0,0,.075);
 	z-index: 1001;
 }
 
@@ -561,9 +562,12 @@ nav#menu #menu-nav li a {
 	text-transform: uppercase;
 }
 
-nav#menu #menu-nav li.current a,
-nav#menu #menu-nav li a:hover {
+nav#menu #menu-nav li.current a {
 	color: #000;
+}
+
+nav#menu #menu-nav li a:hover  {
+    color: gray;
 }
 
 
@@ -1340,22 +1344,19 @@ footer .credits {
     
 }
 
-.grid .single_grid {
+.grid .single_grid,
+.gridFilter .single_gridFilter {
     margin-bottom: 5px;
 }
 
 .gridFilter {
-    column-count: 5;
-    -moz-column-count: 5;
-    -webkit-column-count: 5;
+    column-count: 3;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
     column-gap: 5px;
     -webkit-column-gap: 5px;
     -moz-column-gap: 5px;
     
-}
-
-.gridFilter .single_gridFilter {
-    margin-bottom: 5px;
 }
 
 /* ==================================================
