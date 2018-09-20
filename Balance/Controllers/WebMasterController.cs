@@ -57,8 +57,6 @@ namespace Balance.Controllers
             {
                 chk = "True";
             }
-           
-
             string Images = "";
             if(images != null)
             {
@@ -293,7 +291,7 @@ namespace Balance.Controllers
             }
 
             string Images = ",";
-            if(images != null)
+            if(images[0] != null)
             {
                 foreach (HttpPostedFileBase file in images)
                 {
@@ -305,8 +303,8 @@ namespace Balance.Controllers
                         Images += file.FileName + ",";
                     }
                 }
+                Images = Images.Remove(Images.Length - 1);
             }
-            Images = Images.Remove(Images.Length - 1);
             Connection();
             string sql = "";
             if (Images != "")
@@ -324,13 +322,13 @@ namespace Balance.Controllers
             return RedirectToAction("QLBL", "WebMaster");
         }
 
-        public ActionResult ECSQLP(int id)
+        public ActionResult ECSQLP(string id)
         {
             if (Session["Authentication"] != null)
             {
                 ViewBag.Type = loadCbo();
                 Connection();
-                string sql = "select * from project where IDproject='" + id.ToString() + "'";
+                string sql = "select * from project where IDproject=" + int.Parse(id) + "";
                 da = new OleDbDataAdapter(sql, cn);
                 dt = new DataTable();
                 da.Fill(dt);
@@ -368,9 +366,8 @@ namespace Balance.Controllers
                 }
             }
 
-
             string Images = "";
-            if(images != null)
+            if(images[0] != null)
             {
                 foreach (HttpPostedFileBase file in images)
                 {
@@ -382,21 +379,21 @@ namespace Balance.Controllers
                         Images += file.FileName + ",";
                     }
                 }
-            }
-            Images = Images.Remove(Images.Length - 1);
+                Images = Images.Remove(Images.Length - 1);
+            } 
             Connection();
             string sql = "";        
             if (Images != "")
             {
-                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',IMG='" + Images + "',type='" + cboType + "' where IDproject='" + int.Parse(ID) + "'";
+                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',IMG='" + Images + "',type='" + cboType + "' where IDproject=" + int.Parse(ID) + "";
                 //sql += " where IDmanga='" + Request.Params["id"].ToString() + "'";
             }else if(Avatar != "")
             {
-                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',Avatar='" + Avatar + "',type='" + cboType + "' where IDproject='" + int.Parse(ID) + "'";
+                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',Avatar='" + Avatar + "',type='" + cboType + "' where IDproject=" + int.Parse(ID) + "";
             }
             else
             {
-                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',type='" + cboType + "' where IDproject='" + int.Parse(ID) + "'";
+                sql = "update project set Tittleproject='" + title + "',Hide=" + chk.ToString() + ",Description='" + editor + "',type='" + cboType + "' where IDproject=" + int.Parse(ID) + "";
             }
             cmd = new OleDbCommand(sql, cn);
             cmd.ExecuteNonQuery();
@@ -482,10 +479,10 @@ namespace Balance.Controllers
             }
         }
 
-        public ActionResult deleteProject(int id)
+        public ActionResult deleteProject(string id)
         {
             Connection();   // connection        
-            string sql = "delete from project where IDproject='" + id.ToString() + "'";    // hàm SQL
+            string sql = "delete from project where IDproject=" + int.Parse(id) + "";    // hàm SQL
             cmd = new OleDbCommand(sql, cn);    //command query
             cmd.ExecuteNonQuery();      //thực hiện query
             return RedirectToAction("QLP","WebMaster");
